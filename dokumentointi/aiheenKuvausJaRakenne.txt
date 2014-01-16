@@ -1,0 +1,35 @@
+Aihe: Blackjack
+Toteutetaan blackjack korttipeli, jossa pelataan pankkia vastaan. Pelaajalla on alussa rahakassa, jota h‰n pyrkii kasvattamaan. 
+Jokaisen pelikierttoksen aikana pelaajan tarkoituksena on saada k‰si, jonka yhteenlaskettu pistem‰‰r‰ on 
+suurempi kuin pankin, menem‰tt‰ kuitenkaan yli kahdenkymmenenyhden. 
+
+K‰ytt‰j‰t: Pelaaja
+
+Toiminallisuus
+  Valitse panos:
+	Pelaaja valitsee panoksen, jonka h‰n lis‰‰/poistaa kassastaan k‰den voittamisen/h‰vi‰misen yhteydess‰.
+
+  Korttien jako:
+	Pelaajalle jaetaan kaksi korttia.
+	Pankille jaetaan kaksi korttia, joista toinen on pelaajalle n‰kym‰tˆn.
+
+  Lyˆ:
+	Pelaajalle jaetaan yksi kortti lis‰‰.
+	Jos pelaajan korttien pistem‰‰r‰ on yli 21, ei pelaaja voi ottaa lis‰‰ kortteja.
+	Pankki ottaa lis‰‰ kortteja kunnes jakan korttien pistem‰‰r‰ on yht‰suuri tai suurempi kuin 17.
+	
+  J‰‰:
+	Pelaaja ei ota lis‰‰ kortteja.
+
+  K‰den voittaminen/h‰vi‰minen:
+	Kun pankki ja pelaaja ei kumpikaan en‰‰ ota lis‰‰ kortteja peli loppuu.
+	Jos pelaajan korttien pistem‰‰r‰ on korkeampi kuin pankin, mutta pienempi kuin 21, voittaa pelaaja.
+	Tasapisteill‰ pelaaja h‰vi‰‰, paitsi jos h‰n on saanut kahdella kortilla pistem‰‰r‰n 21, mutta pankilla on enemm‰n kortteja.
+	Pelaaja menett‰‰ tai voittaa valitsemansa panoksen kassastaan.	
+
+  Lopetus:
+	Pelaaja voi lopettaa milloin tahansa. 
+	Jos pelaajan kassa tippuu nollaan, peli loppuu.
+	
+
+		
