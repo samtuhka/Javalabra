@@ -1,3 +1,7 @@
 Javalabra2014-3
 
 16.1.	2h		Github-repositorion luonti, netbeans projektin luonti, aihem‰‰rittelyn laatiminen, tuntikirjanpidon aloitus ja palautus Githubiin. 
+19.1	25m		M‰‰rittelyvaiheen luokkakaavio luotu
+21.1	2h		Koodaus aloitettu, luokat Kasi, Kortti ja Pakka luotu
+23.1 	3h		Koodausta jatkettu, 16 JUnit testi‰ luotu, Pelaaja luokka luotu alustavasti
+23.1	20m		Pit reporttien kanssa s‰‰t‰mist‰	
