@@ -27,7 +27,10 @@ Toiminallisuus
 	Tasapisteill‰ pelaaja h‰vi‰‰, paitsi jos h‰n on saanut kahdella kortilla pistem‰‰r‰n 21, mutta pankilla on enemm‰n kortteja.
 	Pelaaja menett‰‰ tai voittaa valitsemansa panoksen kassastaan.	
 
-  Lopetus:
+ Tuplaus:
+	Jos kahden ensimm‰isen kortin pistem‰‰r‰ on 9-11, voi pelaaja tuplata panoksensa.
+
+ Lopetus:
 	Pelaaja voi lopettaa milloin tahansa. 
 	Jos pelaajan kassa tippuu nollaan, peli loppuu.
 	

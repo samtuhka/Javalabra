@@ -5,3 +5,7 @@ Javalabra2014-3
 21.1	2h		Koodaus aloitettu, luokat Kasi, Kortti ja Pakka luotu
 23.1 	3h		Koodausta jatkettu, 16 JUnit testi‰ luotu, Pelaaja luokka luotu alustavasti
 23.1	20m		Pit reporttien kanssa s‰‰t‰mist‰	
+4.2	3h		Luokat BlackJackPelaaja, Jakaja, ja Maat luotu. Pelaaja luokkaa muokattu. 
+5.2	1h		Lisaa JUnit testeja koodattu.
+6.2	1h		BlackJackKierros luokan koodaus aloitettu.
+7.2	1h		Javadoc aloitettu, aihem‰‰rittely‰ p‰ivitetty

@@ -17,15 +17,15 @@ public class KasiTest {
 
     @Test
     public void lisaaAssa() {
-        Kortti k = new Kortti(1, 1);
+        Kortti k = new Kortti(Maat.Hertta, 1);
         kasi.lisaaKortti(k);
         assertEquals(11, kasi.getArvo());
     }
 
     @Test
     public void blackjack() {
-        Kortti k1 = new Kortti(1, 1);
-        Kortti k2 = new Kortti(1, 10);
+        Kortti k1 = new Kortti(Maat.Hertta, 1);
+        Kortti k2 = new Kortti(Maat.Hertta, 10);
         kasi.lisaaKortti(k1);
         kasi.lisaaKortti(k2);
         assertEquals(21, kasi.getArvo());
@@ -34,9 +34,9 @@ public class KasiTest {
 
     @Test
     public void lisaaKortteja() {
-        Kortti k1 = new Kortti(1, 1);
-        Kortti k2 = new Kortti(1, 10);
-        Kortti k3 = new Kortti(1, 10);
+        Kortti k1 = new Kortti(Maat.Hertta, 1);
+        Kortti k2 = new Kortti(Maat.Hertta, 10);
+        Kortti k3 = new Kortti(Maat.Hertta, 10);
         kasi.lisaaKortti(k1);
         kasi.lisaaKortti(k2);
         kasi.lisaaKortti(k3);
@@ -46,10 +46,10 @@ public class KasiTest {
 
     @Test
     public void onBusted() {
-        Kortti k1 = new Kortti(1, 1);
-        Kortti k2 = new Kortti(1, 10);
-        Kortti k3 = new Kortti(1, 10);
-        Kortti k4 = new Kortti(2, 10);
+        Kortti k1 = new Kortti(Maat.Hertta, 1);
+        Kortti k2 = new Kortti(Maat.Hertta, 10);
+        Kortti k3 = new Kortti(Maat.Hertta, 10);
+        Kortti k4 = new Kortti(Maat.Hertta, 10);
         kasi.lisaaKortti(k1);
         kasi.lisaaKortti(k2);
         kasi.lisaaKortti(k3);
@@ -60,9 +60,9 @@ public class KasiTest {
 
     @Test
     public void eiBusted() {
-        Kortti k1 = new Kortti(1, 1);
-        Kortti k2 = new Kortti(1, 10);
-        Kortti k3 = new Kortti(1, 10);
+        Kortti k1 = new Kortti(Maat.Hertta, 1);
+        Kortti k2 = new Kortti(Maat.Hertta, 10);
+        Kortti k3 = new Kortti(Maat.Hertta, 10);
         kasi.lisaaKortti(k1);
         kasi.lisaaKortti(k2);
         kasi.lisaaKortti(k3);
