@@ -29,6 +29,7 @@ public class LyomisKuuntelija implements ActionListener {
         kierros.lyo(pelaaja);
         liittyma.pelaajanKortit(0, pelaaja.getKasi(), true);
         liittyma.pelaajanKortit(1, jakaja.getKasi(), true);
+         paneeli.tuplausNappula.setEnabled(false);
         if (pelaaja.getKasi().busted()) {
             kierros.kierroksenLoppu();
             liittyma.pelaajanKortit(0, pelaaja.getKasi(), false);
@@ -36,7 +37,6 @@ public class LyomisKuuntelija implements ActionListener {
             paneeli.jaaKortitNappula.setEnabled(true);
             paneeli.lyomisNappula.setEnabled(false);
             paneeli.jaamisNappula.setEnabled(false);
-            paneeli.tuplausNappula.setEnabled(false);
             liittyma.paivitaPelia();
             
             return;

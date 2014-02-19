@@ -7,13 +7,13 @@ import blackjack.domain.pelaaja.BlackjackPelaaja;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 import blackjack.gui.util.KorttienKuvienLataaja;
-
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
@@ -107,24 +107,28 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void pelaajanKortit(int id, Kasi kasi, boolean piilotaEka) {
+        paneeli.korttiPaneeli();
+        JPanel panel = null;
+        paneeli.repaint();
+
         if (id == 0) {
-            paneeli.pelaajanKortit.removeAll();
+            panel = paneeli.pelaajanKortit;
         } else {
-            paneeli.vastustajanKortit.removeAll();
+            panel = paneeli.vastustajanKortit;
         }
+        panel.removeAll();
         KorttienKuvienLataaja l = new KorttienKuvienLataaja();
         for (int i = 0; i < kasi.getKorttienMaara(); i++) {
             Kortti k = kasi.getKortit().get(i);
             Image kuva = l.getKuva(k);
-            if (i==0 && id != 0 && piilotaEka == true) {
+            if (i == 0 && id != 0 && piilotaEka == true) {
                 kuva = l.getKortinTakapuoli();
             }
+            JLabel labeli = new JLabel();
+            panel.add(labeli);
+            ImageIcon icon = new ImageIcon(kuva);
+            labeli.setIcon(icon);
 
-            if (id == 0) {
-                paneeli.pelaajanKortit.add(new JLabel(new ImageIcon(kuva)));
-            } else {
-                paneeli.vastustajanKortit.add(new JLabel(new ImageIcon(kuva)));
-            }
         }
     }
 }

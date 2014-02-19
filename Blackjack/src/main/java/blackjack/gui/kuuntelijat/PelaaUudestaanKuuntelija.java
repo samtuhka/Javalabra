@@ -22,6 +22,7 @@ public class PelaaUudestaanKuuntelija implements ActionListener {
         ui.paivitaPelia();
         ui.paneeli.pelaajanKortit.removeAll();
         ui.paneeli.vastustajanKortit.removeAll();
+        ui.paneeli.repaint();
 
         ui.paneeli.jakajaLabel.setText("  Jakaja:  ");
         ui.paneeli.pelaajaLabel.setText("  Pelaaja:  ");

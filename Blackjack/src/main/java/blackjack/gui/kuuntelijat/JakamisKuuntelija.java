@@ -28,7 +28,6 @@ public class JakamisKuuntelija implements ActionListener {
         Pelaaja pelaaja = kierros.getPelaaja();
         Jakaja jakaja = kierros.getJakaja();
 
-
         kierros.uusiKierros(peli.getSeuraavaPanos());
 
         kierros.lyo(pelaaja);

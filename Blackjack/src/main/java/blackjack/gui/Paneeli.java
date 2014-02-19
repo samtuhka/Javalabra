@@ -25,7 +25,7 @@ import javax.swing.JRadioButton;
 
 public class Paneeli extends JPanel {
 
-    JPanel korttipaneeli = new JPanel(new GridLayout(2, 1));
+    JPanel korttipaneeli = new JPanel(new GridLayout(4, 1));
     public JPanel pelaajanKortit = new JPanel();
     public JPanel vastustajanKortit = new JPanel();
     JPanel valikko = new JPanel();
@@ -98,10 +98,10 @@ public class Paneeli extends JPanel {
         korttiPaneeli();
 
         setLayout(new BorderLayout());
-        add(valikko, BorderLayout.SOUTH);
-        add(jakajanPaneeli, BorderLayout.EAST);
-        add(pelaajanPaneeli, BorderLayout.NORTH);
+        
+
         add(korttipaneeli, BorderLayout.CENTER);
+        add(valikko, BorderLayout.SOUTH);
     }
 
     public void panosPaneeli() {
@@ -119,7 +119,7 @@ public class Paneeli extends JPanel {
         panos300.setBackground(new Color(0, 100, 0));
         panos400.setBackground(new Color(0, 100, 0));
 
-        panosValikko.add(new JLabel("                 Valitse panos:"));
+        panosValikko.add(new JLabel("Valitse panos:"));
         panosValikko.add(new JLabel(""));
 
         buttonGroup.add(panos100);
@@ -139,11 +139,14 @@ public class Paneeli extends JPanel {
         vastustajanKortit.setBackground(new Color(0, 150, 0));
 
         korttipaneeli.setBackground(new Color(0, 150, 0));
-
+        
+        
+        korttipaneeli.add(jakajanPaneeli);
         korttipaneeli.add(vastustajanKortit);
+        
 
         korttipaneeli.add(pelaajanKortit);
-
+        korttipaneeli.add(pelaajanPaneeli);
     }
     
 }
