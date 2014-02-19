@@ -95,4 +95,8 @@ public class Kasi {
         }
         return false;
     }
+    
+    public ArrayList<Kortti> getKortit() {
+        return kasi;
+    }
 }

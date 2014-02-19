@@ -1,5 +1,6 @@
 package blackjack.domain;
 
+import blackjack.domain.pelaaja.BlackjackPelaaja;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 
@@ -43,7 +44,7 @@ public class BlackjackKierros {
      *
      * @param p jakaja tai pelaaja
      */
-    public void lyo(Pelaaja p) {
+    public void lyo(BlackjackPelaaja p) {
         p.getKasi().otaPakastaKortti(pakka);
     }
 
@@ -62,7 +63,7 @@ public class BlackjackKierros {
         if (pelaaja.getKasi().busted()) {
             return false;
         }
-        if (pelaaja.getPisteet() < jakaja.getPisteet()) {
+        if (pelaaja.getPisteet() < jakaja.getPisteet() && jakaja.getPisteet()<=21) {
             return false;
         } else if (pelaaja.getPisteet() == 21 && jakaja.getPisteet() == 21 && pelaaja.getKasi().getKorttienMaara() == 2 && jakaja.getKasi().getKorttienMaara() != 2) {
             return true;
@@ -82,5 +83,17 @@ public class BlackjackKierros {
         } else {
             pelaaja.poistaKassasta(panos);
         }
+    }
+
+    public Pelaaja getPelaaja() {
+        return pelaaja;
+    }
+
+    public Jakaja getJakaja() {
+        return jakaja;
+    }
+
+    public Pakka getPakka() {
+        return pakka;
     }
 }

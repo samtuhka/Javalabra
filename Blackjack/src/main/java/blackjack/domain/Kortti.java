@@ -1,5 +1,6 @@
 package blackjack.domain;
 
+
 /**
  * Luokka edustaa pelikortteja.
  */
@@ -27,7 +28,8 @@ public class Kortti {
     }
 
     /**
-     * Palauttaa kortin pistearvon, joka maarayttyy Blackjackin saantojen mukaan.
+     * Palauttaa kortin pistearvon, joka maarayttyy Blackjackin saantojen
+     * mukaan.
      */
     public int getPisteArvo() {
         if (arvo == 1) {
@@ -50,4 +52,5 @@ public class Kortti {
     public String toString() {
         return maa.toString() + " " + Arvot[arvo];
     }
+
 }
