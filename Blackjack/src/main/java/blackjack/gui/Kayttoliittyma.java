@@ -20,7 +20,8 @@ import javax.swing.WindowConstants;
  *
  */
 public class Kayttoliittyma implements Runnable {
-
+    
+    private KorttienKuvienLataaja lataaja;
     private JFrame frame;
     /**
      *
@@ -37,6 +38,7 @@ public class Kayttoliittyma implements Runnable {
     public Kayttoliittyma() {
         this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", 1000));
         this.paneeli = new Pelipaneeli(this);
+        this.lataaja =  new KorttienKuvienLataaja();
     }
 
     @Override
@@ -144,7 +146,7 @@ public class Kayttoliittyma implements Runnable {
         }
         panel.removeAll();
 
-        KorttienKuvienLataaja lataaja = new KorttienKuvienLataaja();
+        
         for (int i = 0; i < kasi.getKorttienMaara(); i++) {
             Kortti kortti = kasi.getKortit().get(i);
             Image kuva = lataaja.getKuva(kortti);
@@ -164,7 +166,8 @@ public class Kayttoliittyma implements Runnable {
     }
 
     public void varaPelajaanKortit(JLabel labeli, Kortti kortti, int i, boolean pelaaja, boolean piilotetaan) {
-        System.out.println("Kuvien tiedostopolku väärin!!! Korjaa kuvaKansionPolku luokassa KorttienKuvienLataaja");
+        System.out.println("Polkua " + lataaja.getPolku() + "ei löydy. Kuvakansion tiedostopolku väärin!!!");
+        System.out.println("Korjaa kuvaKansionPolku luokassa KorttienKuvienLataaja!");
         System.out.println("Kuvat korvattu tekstillä");
         if (piilotetaan && i==0 && pelaaja==false) {
             labeli.setText("Piilotettu kortti");
