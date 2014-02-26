@@ -3,7 +3,6 @@ package blackjack.gui;
 import blackjack.domain.BlackjackPeli;
 import blackjack.domain.Kasi;
 import blackjack.domain.Kortti;
-import blackjack.domain.pelaaja.BlackjackPelaaja;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 import blackjack.gui.util.KorttienKuvienLataaja;
@@ -23,15 +22,21 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
 
     private JFrame frame;
+    /**
+     *
+     */
     public BlackjackPeli peli;
-    public Paneeli paneeli;
+    /**
+     *
+     */
+    public Pelipaneeli paneeli;
 
     /**
      *
      */
     public Kayttoliittyma() {
         this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", 1000));
-        this.paneeli = new Paneeli(this);
+        this.paneeli = new Pelipaneeli(this);
     }
 
     @Override
@@ -51,13 +56,20 @@ public class Kayttoliittyma implements Runnable {
         container.add(paneeli);
     }
 
+    /**
+     *
+     * @return
+     */
     public JFrame getFrame() {
         return frame;
     }
 
+    /**
+     *
+     */
     public void paivitaPelia() {
-        Pelaaja pelaaja = peli.getKierros().getPelaaja();
-        Jakaja jakaja = peli.getKierros().getJakaja();
+        Pelaaja pelaaja = peli.getPelaaja();
+        Jakaja jakaja = peli.getJakaja();
         paivitaPanosNappulat();
         if (pelaaja.getKassa() < peli.getSeuraavaPanos()) {
             paneeli.panos100.doClick();
@@ -71,8 +83,11 @@ public class Kayttoliittyma implements Runnable {
         paneeli.jakajaLabel.setText("Jakajan pistemäärä:  " + jakaja.getPisteet());
     }
 
+    /**
+     *
+     */
     public void paivitaPanosNappulat() {
-        Pelaaja pelaaja = peli.getKierros().getPelaaja();
+        Pelaaja pelaaja = peli.getPelaaja();
         mustaaPanosNappulat();
 
         if (pelaaja.getKassa() >= 100) {
@@ -89,6 +104,11 @@ public class Kayttoliittyma implements Runnable {
         }
     }
 
+    /**
+     * Mustaa panosnappulat, jotta pelaaja ei voi painaa niitä kesken
+     * kierroksen. Mahdollisesti vähän turha metodi, koska panos ei kesken
+     * kierroksen voi kuitenkaan vaihtua.
+     */
     public void mustaaPanosNappulat() {
         paneeli.panos100.setEnabled(false);
         paneeli.panos200.setEnabled(false);
@@ -96,39 +116,62 @@ public class Kayttoliittyma implements Runnable {
         paneeli.panos400.setEnabled(false);
     }
 
+    /**
+     * Päivittää nappulat
+     */
     public void paivitaVararikossa() {
-
         paneeli.jaaKortitNappula.setEnabled(false);
         paneeli.jaamisNappula.setEnabled(false);
         paneeli.lyomisNappula.setEnabled(false);
         paneeli.pelaaUudestaanNappula.setEnabled(true);
-
-
     }
 
-    public void pelaajanKortit(int id, Kasi kasi, boolean piilotaEka) {
-        paneeli.korttiPaneeli();
+    /**
+     *
+     * @param id
+     * @param kasi
+     * @param piilotaEka
+     */
+    public void pelaajanKortit(Kasi kasi, boolean pelaaja, boolean piilotaEka) {
+
         JPanel panel = null;
         paneeli.repaint();
 
-        if (id == 0) {
+        if (pelaaja) {
             panel = paneeli.pelaajanKortit;
         } else {
             panel = paneeli.vastustajanKortit;
         }
         panel.removeAll();
-        KorttienKuvienLataaja l = new KorttienKuvienLataaja();
+
+        KorttienKuvienLataaja lataaja = new KorttienKuvienLataaja();
         for (int i = 0; i < kasi.getKorttienMaara(); i++) {
-            Kortti k = kasi.getKortit().get(i);
-            Image kuva = l.getKuva(k);
-            if (i == 0 && id != 0 && piilotaEka == true) {
-                kuva = l.getKortinTakapuoli();
+            Kortti kortti = kasi.getKortit().get(i);
+            Image kuva = lataaja.getKuva(kortti);
+            if (i == 0 && pelaaja==false && piilotaEka == true) {
+                kuva = lataaja.getKortinTakapuoli();
             }
             JLabel labeli = new JLabel();
             panel.add(labeli);
-            ImageIcon icon = new ImageIcon(kuva);
-            labeli.setIcon(icon);
-
+            if (kuva != null) {       
+                ImageIcon icon = new ImageIcon(kuva);
+                labeli.setIcon(icon);
+            }
+            if (kuva==null) {
+                varaPelajaanKortit(labeli, kortti, i, pelaaja, piilotaEka);
+            }
         }
+    }
+
+    public void varaPelajaanKortit(JLabel labeli, Kortti kortti, int i, boolean pelaaja, boolean piilotetaan) {
+        System.out.println("Kuvien tiedostopolku väärin!!! Korjaa kuvaKansionPolku luokassa KorttienKuvienLataaja");
+        System.out.println("Kuvat korvattu tekstillä");
+        if (piilotetaan && i==0 && pelaaja==false) {
+            labeli.setText("Piilotettu kortti");
+        }
+        else {
+            labeli.setText(kortti.toString());
+        }
+       
     }
 }

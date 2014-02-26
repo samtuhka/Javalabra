@@ -5,8 +5,20 @@ package blackjack.domain;
  */
 public enum Maat {
 
+    /**
+     *
+     */
     Risti,
+    /**
+     *
+     */
     Ruutu,
+    /**
+     *
+     */
     Hertta,
+    /**
+     *
+     */
     Pata;
 }

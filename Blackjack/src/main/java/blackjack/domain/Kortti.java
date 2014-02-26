@@ -22,6 +22,7 @@ public class Kortti {
 
     /**
      * Pelauttaa kortin numeroarvon.
+     * @return 
      */
     public int getArvo() {
         return arvo;
@@ -30,6 +31,7 @@ public class Kortti {
     /**
      * Palauttaa kortin pistearvon, joka maarayttyy Blackjackin saantojen
      * mukaan.
+     * @return 
      */
     public int getPisteArvo() {
         if (arvo == 1) {
@@ -43,6 +45,7 @@ public class Kortti {
 
     /**
      * Palauttaa kortin maan.
+     * @return 
      */
     public String getMaa() {
         return maa.toString();

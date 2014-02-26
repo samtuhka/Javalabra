@@ -1,50 +1,57 @@
 package blackjack.gui.kuuntelijat;
 
 import blackjack.domain.BlackjackKierros;
-import blackjack.domain.BlackjackPeli;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 import blackjack.gui.Kayttoliittyma;
-import blackjack.gui.Paneeli;
+import blackjack.gui.Pelipaneeli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *
+ * 
+ */
 public class LyomisKuuntelija implements ActionListener {
 
+    /**
+     *
+     */
     public BlackjackKierros kierros;
-    private Paneeli paneeli;
+    private Pelipaneeli paneeli;
     Kayttoliittyma liittyma;
 
-    public LyomisKuuntelija(Paneeli paneeli, BlackjackPeli peli, Kayttoliittyma liittyma) {
+    /**
+     *
+     * @param paneeli
+     * @param liittyma
+     */
+    public LyomisKuuntelija(Pelipaneeli paneeli, Kayttoliittyma liittyma) {
         this.paneeli = paneeli;
-        this.kierros = peli.getKierros();
+        this.kierros = liittyma.peli.getKierros();
         this.liittyma = liittyma;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Pelaaja pelaaja = kierros.getPelaaja();
-        Jakaja jakaja = kierros.getJakaja();
+        Pelaaja pelaaja = liittyma.peli.getPelaaja();
+        Jakaja jakaja =  liittyma.peli.getJakaja();
 
         kierros.lyo(pelaaja);
-        liittyma.pelaajanKortit(0, pelaaja.getKasi(), true);
-        liittyma.pelaajanKortit(1, jakaja.getKasi(), true);
-         paneeli.tuplausNappula.setEnabled(false);
+        liittyma.pelaajanKortit(pelaaja.getKasi(), true, false);
+        liittyma.pelaajanKortit(jakaja.getKasi(), false, true);
+        paneeli.tuplausNappula.setEnabled(false);
         if (pelaaja.getKasi().busted()) {
             kierros.kierroksenLoppu();
-            liittyma.pelaajanKortit(0, pelaaja.getKasi(), false);
-            liittyma.pelaajanKortit(1, jakaja.getKasi(), false);
-            paneeli.jaaKortitNappula.setEnabled(true);
-            paneeli.lyomisNappula.setEnabled(false);
-            paneeli.jaamisNappula.setEnabled(false);
+            liittyma.pelaajanKortit(jakaja.getKasi(), false, false);
+            paneeli.nappulatPerustilaan();
             liittyma.paivitaPelia();
-            
             return;
-        }   
-        if (pelaaja.getPisteet()==21) {
-             paneeli.lyomisNappula.setEnabled(false);
         }
-        
+        if (pelaaja.getPisteet() == 21) {
+            paneeli.lyomisNappula.setEnabled(false);
+        }
+
         paneeli.pelaajaLabel.setText("Pisteet:  " + pelaaja.getPisteet() + "   Kassa: " + pelaaja.getKassa());
         paneeli.jakajaLabel.setText("Jakajan pistemäärä:  " + jakaja.getNakyvaKasi().getArvo());
     }

@@ -5,41 +5,37 @@ import blackjack.domain.BlackjackPeli;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 import blackjack.gui.Kayttoliittyma;
-import blackjack.gui.Paneeli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *
+ * @author Samuel
+ */
 public class JaamisKuuntelija implements ActionListener {
-
-    Paneeli paneeli;
+    
+    BlackjackPeli peli;
     BlackjackKierros kierros;
-    ;
-    Kayttoliittyma liittyma;
+    Kayttoliittyma ui;
 
-    public JaamisKuuntelija(Paneeli paneeli, BlackjackPeli peli, Kayttoliittyma liittyma) {
-        this.paneeli = paneeli;
-        this.kierros = peli.getKierros();
-        this.liittyma = liittyma;
+    public JaamisKuuntelija(Kayttoliittyma ui) {
+        this.peli = ui.peli;
+        this.kierros = ui.peli.getKierros();
+        this.ui = ui;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Pelaaja pelaaja = this.kierros.getPelaaja();
-        Jakaja jakaja = this.kierros.getJakaja();
-        while (jakaja.ottaaKortin()) {
-            this.kierros.lyo(jakaja);
-        }
-        liittyma.pelaajanKortit(0, pelaaja.getKasi(), false);
-        liittyma.pelaajanKortit(1, jakaja.getKasi(), false);
+        Pelaaja pelaaja = peli.getPelaaja();
+        Jakaja jakaja = peli.getJakaja();
+        
+        this.kierros.jakajaOttaaKortteja();
+
+        ui.pelaajanKortit(pelaaja.getKasi(), true, false);
+        ui.pelaajanKortit(jakaja.getKasi(), false, false);
 
         this.kierros.kierroksenLoppu();
-
-        paneeli.lyomisNappula.setEnabled(false);
-        paneeli.jaamisNappula.setEnabled(false);
-        paneeli.jaaKortitNappula.setEnabled(true);
-        paneeli.tuplausNappula.setEnabled(false);
-
-        liittyma.paivitaPelia();
-
+        ui.paneeli.nappulatPerustilaan();
+        ui.paivitaPelia();
     }
 }

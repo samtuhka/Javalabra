@@ -39,6 +39,7 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * maarittaa onko pelaajan varaa jatkaa pelia.
+     * @return 
      */
     public boolean vararikko() {
         if (kassa <= 0) {
@@ -49,6 +50,7 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * Kertoo kuinka paljon pelaajalla on rahaa kassassa.
+     * @return 
      */
     public int getKassa() {
         return kassa;
@@ -58,6 +60,7 @@ public class Pelaaja extends BlackjackPelaaja {
      * Maarittaa onko pelaajalla varaa panostaa valitun maaran verran.
      *
      * @param panos valittu panos.
+     * @return  
      */
     public boolean voiBetata(int panos) {
         if (kassa < panos) {
@@ -72,6 +75,7 @@ public class Pelaaja extends BlackjackPelaaja {
      * rahaa.
      *
      * @param panos valittu panos mita yritetaan tuplata.
+     * @return  
      */
     public boolean voiTuplata(int panos) {
         if (getKasi().getArvo() >= 9 && getKasi().getArvo() <= 11 && getKasi().getKorttienMaara() == 2 && (kassa >= 2 * panos)) {

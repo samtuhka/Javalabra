@@ -66,6 +66,7 @@ public class Pakka {
     /**
      * Maarittaa sisaltaako pakka valitun kortin.
      * @param k valittu kortti
+     * @return  
      */
     public boolean sisaltaa(Kortti k) {
         if (pakka.contains(k)) {
@@ -76,6 +77,7 @@ public class Pakka {
     
     /**
      * Palauttaa pakan ensimmaisen kortin.
+     * @return 
      */
     public Kortti annaPaallimainen() {
         return pakka.get(0);
@@ -92,6 +94,7 @@ public class Pakka {
     
     /**
      * Palauttaa pakassa olevien korttien lukumaaran.
+     * @return 
      */
     public int getPakanKoko() {
         return pakka.size();

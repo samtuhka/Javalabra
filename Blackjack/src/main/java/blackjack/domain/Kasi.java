@@ -44,6 +44,7 @@ public class Kasi {
 
     /**
      * Laskee kaden pistearvon.
+     * @return 
      */
     public int getArvo() {
         int arvo = 0;
@@ -62,6 +63,7 @@ public class Kasi {
 
     /**
      * Maarittaa onko kasi Blackjack.
+     * @return 
      */
     public boolean onBlackjack() {
         if (kasi.size() == 2 && getArvo() == 21) {
@@ -81,6 +83,7 @@ public class Kasi {
 
     /**
      * Palauttaa kadessa olevien korttien lukumaaran.
+     * @return 
      */
     public int getKorttienMaara() {
         return kasi.size();
@@ -88,6 +91,7 @@ public class Kasi {
 
     /**
      * Maarittaa onko kaden arvo yli 21.
+     * @return 
      */
     public boolean busted() {
         if (getArvo() > 21) {
@@ -96,6 +100,10 @@ public class Kasi {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Kortti> getKortit() {
         return kasi;
     }

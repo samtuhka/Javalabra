@@ -17,6 +17,7 @@ public class Jakaja extends BlackjackPelaaja {
 
     /**
      * Maarittaa ottaako jakaja kortin vai ei.
+     * @return 
      */
     public boolean ottaaKortin() {
         if (getPisteet() <= 16) {
@@ -25,6 +26,10 @@ public class Jakaja extends BlackjackPelaaja {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public Kasi getNakyvaKasi() {
         Kasi nakyvaKasi = new Kasi();
         for (int i = 1; i <= this.getKasi().getKorttienMaara() -1; i++) {
@@ -34,6 +39,10 @@ public class Jakaja extends BlackjackPelaaja {
         return nakyvaKasi;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getNakyvatPisteet() {
         return getNakyvaKasi().getArvo();
     }

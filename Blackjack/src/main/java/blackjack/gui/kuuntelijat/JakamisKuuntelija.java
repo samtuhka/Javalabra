@@ -5,19 +5,28 @@ import blackjack.domain.BlackjackPeli;
 import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 import blackjack.gui.Kayttoliittyma;
-import blackjack.gui.Paneeli;
+import blackjack.gui.Pelipaneeli;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *
+ * @author Samuel
+ */
 public class JakamisKuuntelija implements ActionListener {
 
     private BlackjackPeli peli;
     private Kayttoliittyma liittyma;
-    private Paneeli paneeli;
+    private Pelipaneeli paneeli;
 
-    public JakamisKuuntelija(Kayttoliittyma liittyma, Paneeli paneeli, BlackjackPeli peli) {
+    /**
+     *
+     * @param liittyma
+     * @param paneeli
+     */
+    public JakamisKuuntelija(Kayttoliittyma liittyma, Pelipaneeli paneeli) {
         this.paneeli = paneeli;
-        this.peli = peli;
+        this.peli = liittyma.peli;
         this.liittyma = liittyma;
     }
 
@@ -25,19 +34,13 @@ public class JakamisKuuntelija implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         BlackjackKierros kierros = peli.getKierros();
 
-        Pelaaja pelaaja = kierros.getPelaaja();
-        Jakaja jakaja = kierros.getJakaja();
+        Pelaaja pelaaja = peli.getPelaaja();
+        Jakaja jakaja = peli.getJakaja();
 
         kierros.uusiKierros(peli.getSeuraavaPanos());
 
-        kierros.lyo(pelaaja);
-        kierros.lyo(pelaaja);
-
-        kierros.lyo(jakaja);
-        kierros.lyo(jakaja);
-        
-        liittyma.pelaajanKortit(0, pelaaja.getKasi(), true);
-        liittyma.pelaajanKortit(1, jakaja.getKasi(), true);
+        liittyma.pelaajanKortit(pelaaja.getKasi(), true, true);
+        liittyma.pelaajanKortit(jakaja.getKasi(), false, true);
         
         liittyma.mustaaPanosNappulat();
         

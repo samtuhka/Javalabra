@@ -20,10 +20,10 @@ public class BlackjackKierros {
      * @param pelaaja pelaaja
      * @param panos valittu panos
      */
-    public BlackjackKierros(Pelaaja pelaaja, int panos) {
+    public BlackjackKierros(Pelaaja pelaaja, Pakka pakka, Jakaja jakaja, int panos) {
         this.pelaaja = pelaaja;
-        this.jakaja = new Jakaja();
-        this.pakka = new Pakka();
+        this.jakaja = jakaja;
+        this.pakka = pakka;
         this.panos = panos;
     }
 
@@ -37,6 +37,11 @@ public class BlackjackKierros {
         this.pelaaja.uusiKasi();
         this.jakaja.uusiKasi();
         this.panos = panos;
+
+        lyo(pelaaja);
+        lyo(pelaaja);
+        lyo(jakaja);
+        lyo(jakaja);
     }
 
     /**
@@ -58,6 +63,7 @@ public class BlackjackKierros {
 
     /**
      * Maarittaa voittaako vai haviaako pelaaja kierroksen.
+     * @return 
      */
     public boolean pelaajaVoittaa() {
         if (pelaaja.getKasi().busted()) {
@@ -74,6 +80,10 @@ public class BlackjackKierros {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean tasaPeli() {
         if (pelaaja.getKasi().onBlackjack() && jakaja.getKasi().onBlackjack()) {
             return true;
@@ -98,15 +108,15 @@ public class BlackjackKierros {
         }
     }
 
-    public Pelaaja getPelaaja() {
-        return pelaaja;
+    /**
+     *
+     */
+    public void jakajaOttaaKortteja() {
+        while (jakaja.ottaaKortin()) {
+            lyo(jakaja);
+        }
     }
 
-    public Jakaja getJakaja() {
-        return jakaja;
-    }
 
-    public Pakka getPakka() {
-        return pakka;
-    }
+
 }

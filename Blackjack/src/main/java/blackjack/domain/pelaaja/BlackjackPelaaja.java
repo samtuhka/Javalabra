@@ -12,6 +12,7 @@ public class BlackjackPelaaja {
 
     /**
      * Luo BlackJack pelaajan.
+     * @param nimi 
      */
     public BlackjackPelaaja(String nimi) {
         this.nimi = nimi;
@@ -27,6 +28,7 @@ public class BlackjackPelaaja {
 
     /**
      * Palauttaa BlackJack pelaajan nimen.
+     * @return 
      */
     public String getNimi() {
         return nimi;
@@ -34,6 +36,7 @@ public class BlackjackPelaaja {
 
     /**
      * Palauttaa kaden, joka BlackJack pelaajalla on.
+     * @return 
      */
     public Kasi getKasi() {
         return this.kasi;
@@ -41,6 +44,7 @@ public class BlackjackPelaaja {
     
     /**
      * Palauttaa pisteet.
+     * @return 
      */
     public int getPisteet() {
         return this.kasi.getArvo();
