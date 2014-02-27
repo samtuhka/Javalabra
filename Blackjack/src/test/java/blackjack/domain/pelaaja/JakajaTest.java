@@ -23,10 +23,35 @@ public class JakajaTest {
     }
 
     @Test
-    public void eiOtaKorttia() {
+    public void ottaaKortin2() {
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        assertTrue(jakaja.ottaaKortin());
+    }
+
+    @Test
+    public void eiOtaKorttia2() {
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
         assertTrue(!jakaja.ottaaKortin());
+    }
+
+    @Test
+    public void nakyvaKasi() {
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        assertTrue(jakaja.getNakyvaKasi().getKorttienMaara()==2);
+    }
+
+    @Test
+    public void nakyvatPisteet() {
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Pata, 5));
+        assertTrue(jakaja.getNakyvatPisteet() == 10);
     }
 }

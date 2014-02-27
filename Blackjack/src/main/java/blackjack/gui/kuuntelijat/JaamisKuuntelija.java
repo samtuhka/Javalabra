@@ -9,8 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author Samuel
+ * Vastaa "jäämis" nappulan toiminnasta.
+ * Pelaaja ei ota enää lisää kortteja painaessaan nappulaa ja kierros loppuu;
  */
 public class JaamisKuuntelija implements ActionListener {
     

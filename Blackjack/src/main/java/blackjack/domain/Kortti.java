@@ -11,7 +11,7 @@ public class Kortti {
     private int arvo;
 
     /**
-     *
+     *  Luo kortin.
      * @param maa kortin maa
      * @param arvo kortin arvo
      */
@@ -22,16 +22,15 @@ public class Kortti {
 
     /**
      * Pelauttaa kortin numeroarvon.
-     * @return 
+     * @return numeroarvo.
      */
     public int getArvo() {
         return arvo;
     }
 
     /**
-     * Palauttaa kortin pistearvon, joka maarayttyy Blackjackin saantojen
-     * mukaan.
-     * @return 
+     * Palauttaa kortin pistearvon, joka maarayttyy Blackjackin saantojen mukaan.
+     * @return pistearvo
      */
     public int getPisteArvo() {
         if (arvo == 1) {

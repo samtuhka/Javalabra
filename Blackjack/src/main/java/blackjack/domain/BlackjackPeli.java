@@ -4,31 +4,29 @@ import blackjack.domain.pelaaja.Jakaja;
 import blackjack.domain.pelaaja.Pelaaja;
 
 /**
- *
- * @author Samuel
+ * Luokka vastaa pelikierrosten ja koko pelin toiminnasta. 
+ * attribuutti seuraavaPanos määrittää seuraavan kierroksen panoksen, jonka pelaaja valitsee kierroksen päätettyä.
  */
 public class BlackjackPeli {
 
     private Jakaja jakaja;
-    private Pakka pakka;
     private BlackjackKierros kierros;
     private Pelaaja pelaaja;
     private int seuraavaPanos;
 
     /**
-     *
+     * Luo blackjack pelin.
      * @param pelaaja
      */
     public BlackjackPeli(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
         this.seuraavaPanos = 100;
         this.jakaja = new Jakaja();
-        this.pakka = new Pakka();
-        this.kierros = new BlackjackKierros(pelaaja, pakka, jakaja, 100);
+        this.kierros = new BlackjackKierros(pelaaja, jakaja, 100);
     }
 
     /**
-     *
+     * Asettaa pelikierroksen kuten halutaan.
      * @param kierros
      */
     public void setKierros(BlackjackKierros kierros) {
@@ -36,15 +34,15 @@ public class BlackjackPeli {
     }
 
     /**
-     *
-     * @return
+     * Palauttaa pelikierroksen.
+     * @return palautettu kierros
      */
     public BlackjackKierros getKierros() {
         return kierros;
     }
 
     /**
-     *
+     * Muuttaa seuraavan kierroksen panoksen valituksi.
      * @param panos
      */
     public void setSeuraavaPanos(int panos) {
@@ -52,30 +50,26 @@ public class BlackjackPeli {
     }
 
     /**
-     *
-     * @return
+     * Palautaa seuraavan kierroksen panoksen.
+     * @return panos
      */
     public int getSeuraavaPanos() {
         return seuraavaPanos;
     }
 
+    /**
+     * Palauttaa pelin pelaajan.
+     * @return pelaaja
+     */
     public Pelaaja getPelaaja() {
         return pelaaja;
     }
 
     /**
-     *
-     * @return
+     * Palauttaa pelin jakajan.
+     * @return jakaja
      */
     public Jakaja getJakaja() {
         return jakaja;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Pakka getPakka() {
-        return pakka;
     }
 }

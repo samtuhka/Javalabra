@@ -10,7 +10,6 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * Luo pelaajan, jolla on nimi ja kassa.
-     *
      * @param nimi pelaajan nimi
      * @param kassa pelaajan aloituskassan arvo.
      */
@@ -30,7 +29,6 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * poistaa pelaajan kassasta valitun arvon.
-     *
      * @param arvo valittu arvo.
      */
     public void poistaKassasta(int arvo) {
@@ -39,7 +37,7 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * maarittaa onko pelaajan varaa jatkaa pelia.
-     * @return 
+     * @return true jos pelaaja on vararikossa muuten false
      */
     public boolean vararikko() {
         if (kassa <= 0) {
@@ -50,7 +48,7 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * Kertoo kuinka paljon pelaajalla on rahaa kassassa.
-     * @return 
+     * @return kassa
      */
     public int getKassa() {
         return kassa;
@@ -58,9 +56,8 @@ public class Pelaaja extends BlackjackPelaaja {
 
     /**
      * Maarittaa onko pelaajalla varaa panostaa valitun maaran verran.
-     *
      * @param panos valittu panos.
-     * @return  
+     * @return true jos voi muuten false.
      */
     public boolean voiBetata(int panos) {
         if (kassa < panos) {
@@ -73,9 +70,8 @@ public class Pelaaja extends BlackjackPelaaja {
      * Maarittaa voiko pelaaja tuplata. Pelaaja voi tuplata, jos kahden
      * ensimmaisen kortin pistemaara on valilla 9-11 ja hanella on tarpeeksi
      * rahaa.
-     *
      * @param panos valittu panos mita yritetaan tuplata.
-     * @return  
+     * @return true jos voi tuplata muuten false
      */
     public boolean voiTuplata(int panos) {
         if (getKasi().getArvo() >= 9 && getKasi().getArvo() <= 11 && getKasi().getKorttienMaara() == 2 && (kassa >= 2 * panos)) {

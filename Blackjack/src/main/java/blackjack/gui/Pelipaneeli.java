@@ -54,8 +54,6 @@ public class Pelipaneeli extends JPanel {
 
         paneelinTekstit();
 
-
-
         panosPaneeli();
         luoKuuntelijat(liittyma);
 
@@ -65,7 +63,6 @@ public class Pelipaneeli extends JPanel {
         valikko.add(jaamisNappula);
         valikko.add(tuplausNappula);
         valikko.add(pelaaUudestaanNappula);
-
 
         pelaajanPaneeli.add(pelaajaLabel);
         jakajanPaneeli.add(jakajaLabel);

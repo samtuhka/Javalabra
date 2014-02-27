@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- *
- * @author Samuel
+ * Vastaa "jaa kortit" nappulan toiminnasta.
+ * Nappia painatessa pelaajalle jaetaan kortit ja pelikierros alkaa.
  */
 public class JakamisKuuntelija implements ActionListener {
 
@@ -20,7 +20,7 @@ public class JakamisKuuntelija implements ActionListener {
     private Pelipaneeli paneeli;
 
     /**
-     *
+     * Luo kuuntelijan.
      * @param liittyma
      * @param paneeli
      */

@@ -32,6 +32,12 @@ public class KorttiTest {
     }
 
     @Test
+    public void pistearvo3() {
+        kortti = new Kortti(Maat.Pata, 10);
+        assertEquals(10, kortti.getPisteArvo());
+    }
+
+    @Test
     public void oikeaKortti() {
         kortti = new Kortti(Maat.Pata, 11);
         assertEquals("Pata J", kortti.toString());

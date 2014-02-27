@@ -18,12 +18,19 @@ public class KorttienKuvienLataaja {
 
     /**
      * Luo laatajan. projektinPolku etsii koko projektin polun. kuvaKansionPolku
-     * on kuvien kansion polku. En tiedä onko tämä järkevä tapa etsiä tuo projektin polku, mutta näyttää toimivan ainakin itselläni.
-     * jar tiedostoa luodessani jouduin muuttamaan jostain syystä tiedostopolkua erilaiseksi.
+     * on kuvien kansion polku. En tiedä onko tämä järkevä tapa etsiä tuo
+     * projektin polku, mutta näyttää toimivan ainakin itselläni. jar tiedostoa
+     * luodessani jouduin muuttamaan jostain syystä tiedostopolkua erilaiseksi.
      */
     public KorttienKuvienLataaja() {
+        this.kuvaKansionPolku = projektinPolku() + "/src/main/resources/cards/";
+    }
+
+    public String projektinPolku() {
         String projektinPolku = Main.class.getResource("").getPath();
-        this.kuvaKansionPolku = projektinPolku + "res/cards/";
+        projektinPolku = new StringBuilder(projektinPolku).reverse().toString().substring(25);
+        projektinPolku = new StringBuilder(projektinPolku).reverse().toString();
+        return projektinPolku;
     }
 
     private BufferedImage lataaKuva(String polku) {
@@ -99,7 +106,7 @@ public class KorttienKuvienLataaja {
 
         return polku;
     }
-    
+
     public String getPolku() {
         return kuvaKansionPolku;
     }

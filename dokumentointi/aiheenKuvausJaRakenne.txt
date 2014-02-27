@@ -35,4 +35,7 @@ Toiminallisuus
 	Jos pelaajan kassa tippuu nollaan, peli loppuu.
 	
 
+
+Rakenne:	
+	
 		

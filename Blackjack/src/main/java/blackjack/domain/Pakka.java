@@ -65,11 +65,11 @@ public class Pakka {
 
     /**
      * Maarittaa sisaltaako pakka valitun kortin.
-     * @param k valittu kortti
-     * @return  
+     * @param kortti valittu kortti
+     * @return true jos sisältää kortin
      */
-    public boolean sisaltaa(Kortti k) {
-        if (pakka.contains(k)) {
+    public boolean sisaltaa(Kortti kortti) {
+        if (pakka.contains(kortti)) {
             return true;
         }
         return false;
@@ -77,7 +77,7 @@ public class Pakka {
     
     /**
      * Palauttaa pakan ensimmaisen kortin.
-     * @return 
+     * @return päällimmäinen kortti
      */
     public Kortti annaPaallimainen() {
         return pakka.get(0);
@@ -94,7 +94,7 @@ public class Pakka {
     
     /**
      * Palauttaa pakassa olevien korttien lukumaaran.
-     * @return 
+     * @return pakan korttien määrä.
      */
     public int getPakanKoko() {
         return pakka.size();

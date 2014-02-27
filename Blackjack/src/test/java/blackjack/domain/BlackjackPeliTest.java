@@ -1,43 +1,44 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package blackjack.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import blackjack.domain.pelaaja.Jakaja;
+import blackjack.domain.pelaaja.Pelaaja;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Samuel
- */
 public class BlackjackPeliTest {
-    
-    public BlackjackPeliTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    BlackjackPeli peli;
+    Pelaaja pelaaja;
+    Jakaja jakaja;
+
     @Before
     public void setUp() {
+        this.pelaaja = new Pelaaja("Pelaaja", 1000);
+        this.peli = new BlackjackPeli(pelaaja);
+        jakaja = this.peli.getJakaja();
     }
-    
-    @After
-    public void tearDown() {
+
+    @Test
+    public void peliKierros() {
+        BlackjackKierros kierros = new BlackjackKierros(pelaaja, new Jakaja(), 100);
+        peli.setKierros(kierros);
+        assertEquals(kierros, peli.getKierros());
     }
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
+    @Test
+    public void oikeaPelaaja() {
+        assertEquals(peli.getPelaaja(), pelaaja);
+    }
+
+    @Test
+    public void oikeaJakaja() {
+        assertEquals(peli.getJakaja(), jakaja);
+    }
+
+    @Test
+    public void oikeaSeuraavanKierroksenPanos() {
+        peli.setSeuraavaPanos(400);
+        assertTrue(peli.getSeuraavaPanos()==400);
+    }
 }

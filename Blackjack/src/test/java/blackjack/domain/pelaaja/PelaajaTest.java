@@ -44,6 +44,12 @@ public class PelaajaTest {
     }
 
     @Test
+    public void eiVararikossa() {
+        pelaaja.poistaKassasta(50);
+        assertTrue(!pelaaja.vararikko());
+    }
+
+    @Test
     public void eiVoiTuplata() {
         pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
         pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
@@ -51,8 +57,23 @@ public class PelaajaTest {
     }
 
     @Test
+    public void eiVoiTuplata2() {
+        
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 8));
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 1));
+        assertTrue(!pelaaja.voiTuplata(200));
+    }
+
+    @Test
     public void voiTuplata() {
         pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 8));
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 2));
+        assertTrue(pelaaja.voiTuplata(50));
+    }
+
+    @Test
+    public void voiTuplata2() {
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 7));
         pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 2));
         assertTrue(pelaaja.voiTuplata(50));
     }

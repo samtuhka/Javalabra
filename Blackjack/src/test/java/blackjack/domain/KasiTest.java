@@ -84,4 +84,19 @@ public class KasiTest {
         assertEquals(3, kasi.getKorttienMaara());
         assertEquals(49, pakka.getPakanKoko());
     }
+
+    @Test
+    public void poistaKortti() {
+        Kortti kortti = new Kortti(Maat.Pata, 2);
+        kasi.lisaaKortti(kortti);
+        kasi.poistaKortti(kortti);
+        assertTrue(!kasi.getKortit().contains(kortti));
+    }
+
+    @Test
+    public void samaKasi() {
+        kasi.otaPakastaKortti(pakka);
+        kasi.otaPakastaKortti(pakka);
+        assertTrue(kasi.getKortit().size()==2);
+    }
 }

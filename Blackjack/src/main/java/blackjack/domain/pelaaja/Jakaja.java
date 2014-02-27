@@ -17,7 +17,7 @@ public class Jakaja extends BlackjackPelaaja {
 
     /**
      * Maarittaa ottaako jakaja kortin vai ei.
-     * @return 
+     * @return true jos ottaa kortin muuten false
      */
     public boolean ottaaKortin() {
         if (getPisteet() <= 16) {
@@ -27,8 +27,8 @@ public class Jakaja extends BlackjackPelaaja {
     }
 
     /**
-     *
-     * @return
+     * Maarittaa jakajan käden, jonka pelaaja näkee ennen kuin pelikierros loppuu.
+     * @return näkyvä käsi
      */
     public Kasi getNakyvaKasi() {
         Kasi nakyvaKasi = new Kasi();
@@ -40,8 +40,8 @@ public class Jakaja extends BlackjackPelaaja {
     }
     
     /**
-     *
-     * @return
+     * Maarittaa jakajan pisteet, jotka  pelaaja näkee ennen kuin pelikierros loppuu
+     * @return näkyvän käden pisteet
      */
     public int getNakyvatPisteet() {
         return getNakyvaKasi().getArvo();
