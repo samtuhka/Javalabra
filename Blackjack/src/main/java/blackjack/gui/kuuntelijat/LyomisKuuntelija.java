@@ -35,12 +35,12 @@ public class LyomisKuuntelija implements ActionListener {
         Jakaja jakaja =  ui.peli.getJakaja();
 
         kierros.lyo(pelaaja);
-        ui.pelaajanKortit(pelaaja.getKasi(), true, false);
-        ui.pelaajanKortit(jakaja.getKasi(), false, true);
+        ui.naytaPelaajanKortit(pelaaja.getKasi(), true, false);
+        ui.naytaPelaajanKortit(jakaja.getKasi(), false, true);
         paneeli.tuplausNappula.setEnabled(false);
         if (pelaaja.getKasi().busted()) {
             kierros.kierroksenLoppu();
-            ui.pelaajanKortit(jakaja.getKasi(), false, false);
+            ui.naytaPelaajanKortit(jakaja.getKasi(), false, false);
             paneeli.nappulatPerustilaan();
             ui.paivitaPelia();
             return;

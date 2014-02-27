@@ -39,8 +39,8 @@ public class JakamisKuuntelija implements ActionListener {
 
         kierros.uusiKierros(peli.getSeuraavaPanos());
 
-        liittyma.pelaajanKortit(pelaaja.getKasi(), true, true);
-        liittyma.pelaajanKortit(jakaja.getKasi(), false, true);
+        liittyma.naytaPelaajanKortit(pelaaja.getKasi(), true, true);
+        liittyma.naytaPelaajanKortit(jakaja.getKasi(), false, true);
         
         liittyma.mustaaPanosNappulat();
         

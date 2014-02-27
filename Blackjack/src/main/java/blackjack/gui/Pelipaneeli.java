@@ -17,8 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
- *
- * @author Samuel
+ * Vastaa pelipaneelin rakenteesta ja luomisesta.
  */
 public class Pelipaneeli extends JPanel {
 
@@ -42,7 +41,7 @@ public class Pelipaneeli extends JPanel {
     public JRadioButton panos400 = new JRadioButton("400");
 
     /**
-     *
+     *  Luo pelipaneelin.
      * @param liittyma
      */
     public Pelipaneeli(Kayttoliittyma liittyma) {
@@ -78,7 +77,7 @@ public class Pelipaneeli extends JPanel {
     }
 
     /**
-     *
+     * Luo panospaneelin.
      */
     public void panosPaneeli() {
         panosValikko.add(new JLabel("Valitse panos:"));
@@ -106,7 +105,7 @@ public class Pelipaneeli extends JPanel {
     }
 
     /**
-     *
+     * Luo korttipaneelin.
      */
     public void korttiPaneeli() {
         pelaajanKortit.setBackground(new Color(0, 150, 0));
@@ -122,8 +121,8 @@ public class Pelipaneeli extends JPanel {
     }
 
     /**
-     *
-     * @param liittyma
+     * Luo nappuloiden kuuntelijat.
+     * @param liittyma käyttöliittymä
      */
     public void luoKuuntelijat(Kayttoliittyma liittyma) {
         jaamisNappula.addActionListener(new JaamisKuuntelija(liittyma));
@@ -140,7 +139,7 @@ public class Pelipaneeli extends JPanel {
     }
 
     /**
-     *
+     * Luo paneelin tekstit.
      */
     public void paneelinTekstit() {
         jaaKortitNappula.setText("  Jaa kortit");
@@ -153,7 +152,7 @@ public class Pelipaneeli extends JPanel {
     }
 
     /**
-     *
+     *  Palauttaa nappulat perustilaan.
      */
     public void nappulatPerustilaan() {
         jaaKortitNappula.setEnabled(true);

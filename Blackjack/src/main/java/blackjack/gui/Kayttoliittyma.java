@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 /**
- * Ei tee yhtään mitään viellä.
+ * Vastaa käyttöliittymästä.
  *
  */
 public class Kayttoliittyma implements Runnable {
@@ -24,16 +24,16 @@ public class Kayttoliittyma implements Runnable {
     private KorttienKuvienLataaja lataaja;
     private JFrame frame;
     /**
-     *
+     * Blackjack peli jota käyttöliittymä käyttää.
      */
     public BlackjackPeli peli;
     /**
-     *
+     * Pelipaneeli joka on osa käyttöliittymää.
      */
     public Pelipaneeli paneeli;
 
     /**
-     *
+     * Luo käyttöliittymän.
      */
     public Kayttoliittyma() {
         this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", 1000));
@@ -58,16 +58,12 @@ public class Kayttoliittyma implements Runnable {
         container.add(paneeli);
     }
 
-    /**
-     *
-     * @return
-     */
     public JFrame getFrame() {
         return frame;
     }
 
     /**
-     *
+     *  Päivittää pelin käyttöliittymää pelitilanteen mukaan.
      */
     public void paivitaPelia() {
         Pelaaja pelaaja = peli.getPelaaja();
@@ -86,7 +82,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     *
+     * Päivittää panosnappuloiden tilat.
      */
     public void paivitaPanosNappulat() {
         Pelaaja pelaaja = peli.getPelaaja();
@@ -119,7 +115,7 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     * Päivittää nappulat
+     * Päivittää nappulat kun pelaaja vararikossa.
      */
     public void paivitaVararikossa() {
         paneeli.jaaKortitNappula.setEnabled(false);
@@ -129,12 +125,12 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     *
-     * @param id
-     * @param kasi
-     * @param piilotaEka
+     * Sijoittaa pelikorttien kuvia pelipaneeliin.
+     * @param kasi käsi jonka kortit halutaan näyttää.
+     * @param pelaaja määrittää onko kyseessä ihmispelaaja vai jakaja, jonka kortteja näytetään.
+     * @param piilotaEka määrittää piilotetaanko jakajan ensimmäinen kortti.
      */
-    public void pelaajanKortit(Kasi kasi, boolean pelaaja, boolean piilotaEka) {
+    public void naytaPelaajanKortit(Kasi kasi, boolean pelaaja, boolean piilotaEka) {
 
         JPanel panel = null;
         paneeli.repaint();
@@ -165,6 +161,15 @@ public class Kayttoliittyma implements Runnable {
         }
     }
 
+    /**
+     * Varametodi, jota naytaPelaajanKortit metodi kutsuu, jos korttien kuvat palautuu nulleina.
+     * Kuvien sijasta kortit representoituu tekstinä.
+     * @param labeli pelipaneelin osa johon teksti sijoitetaan.
+     * @param kortti mitä korttia kuvataan.
+     * @param i kortin indeksi. 
+     * @param pelaaja määrittää onko kyseessä jakaja vai ihmispelaaja.
+     * @param piilotetaan piilotetaanko ensimmäinen kortti vai ei.
+     */
     public void varaPelajaanKortit(JLabel labeli, Kortti kortti, int i, boolean pelaaja, boolean piilotetaan) {
         System.out.println("Polkua " + lataaja.getPolku() + "ei löydy. Kuvakansion tiedostopolku väärin!!!");
         System.out.println("Korjaa kuvaKansionPolku luokassa KorttienKuvienLataaja!");

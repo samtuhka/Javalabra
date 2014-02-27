@@ -31,8 +31,8 @@ public class JaamisKuuntelija implements ActionListener {
         
         this.kierros.jakajaOttaaKortteja();
 
-        ui.pelaajanKortit(pelaaja.getKasi(), true, false);
-        ui.pelaajanKortit(jakaja.getKasi(), false, false);
+        ui.naytaPelaajanKortit(pelaaja.getKasi(), true, false);
+        ui.naytaPelaajanKortit(jakaja.getKasi(), false, false);
 
         this.kierros.kierroksenLoppu();
         ui.paneeli.nappulatPerustilaan();
