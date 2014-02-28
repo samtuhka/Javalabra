@@ -61,20 +61,23 @@ Lopetus:
 
 
 Rakenne:
-	
+
+Ohjelmassa BlackjackPeli on luokka, jonka kautta ohjelmassa päästään käsiksi pelaajaan, jakajaan ja pelikierroksiin. BlackjackKierros luokka hallitsee pelikierrosten toiminnasta ja isosta osasta sovelluslogiikka, kierroksilla on aina korttipakka. Pakka luokka hallitsee korttipakasta, josta pelaaja ja jakaja ottaa kortteja. Pelaajilla ja jakajilla on käsi, jossa on kortteja. Kayttojarjestelma luokka hallitsee käyttöjärjestelmän toiminnasta ja luokka pelipaneeli luo käyttöjärjestelmälle pelipaneelin, käyttöjärjestelmä käyttää myös joukkoa kuuntelijoita, jotka vastaavat pelaajan tekemien nappien painamisten vaikutuksista. 
+
+
 
 Ohjelman paketit:
 
-			domain: sisältää ohjelman sovelluslogiikan
+		domain: sisältää ohjelman sovelluslogiikan
 
-			domain.pelaaja: sisältää pelaajan ja jakajan sovelluslogiikan.
+		domain.pelaaja: sisältää pelaajan ja jakajan sovelluslogiikan.
 		
-			gui: sisältää käyttöliittymän toimintaa toteuttavat luokat
+		gui: sisältää käyttöliittymän toimintaa toteuttavat luokat
 		
-			gui.kuuntelijat: käyttöliittymän nappuloiden kuuntelijat.
+		gui.kuuntelijat: käyttöliittymän nappuloiden kuuntelijat.
 		
-			gui.util: Käyttöliittymän apuluokka, joka auttaa kuvien lukemisessa.
+		gui.util: Käyttöliittymän apuluokka, joka auttaa kuvien lukemisessa.
 		
-			resources.cards: sisältää pelikorttien kuvat.
+		resources.cards: sisältää pelikorttien kuvat.
 	
 		
