@@ -4,9 +4,16 @@ Käyttöohjeet for dummies:
 
 Käynnista ohjelma Blackjack.jar tiedoston kautta tai mielummin (kuvat saattaa bugittaa jarissa) netbeansin "run" komennon avulla. 
 
-Aloita peli valitsemalla haluamasi panos panosvalikosta ja paina "jaa kortit" nappulaa. Paina nappulaa "ota kortti" jos haluat ottaa lisää kortteja ja "jää" jos olet tyytyväinen käteesi. Tuplaaminen on mahdollista tietyissä tilanteissa, jolloin voit painaa "tuplaa" nappulaa. Pelipaneelissa lukee kassasi suuruus, jos tämä menee nollaan häviät ja joudut aloittamaan pelin uudestaan "pelaa uudestaan" nappulaa painamalla, jos näin haluat tehdä.
 
- Antautuminen onnistuu "antaudu" napilla.
+Aloita peli valitsemalla haluamasi panos panosvalikosta ja paina "jaa kortit" nappulaa. 
+Paina nappulaa "ota kortti" jos haluat ottaa lisää kortteja ja "jää" jos olet tyytyväinen käteesi. 
+Tuplaaminen on mahdollista tietyissä tilanteissa, jolloin voit painaa "tuplaa" nappulaa. 
+Pelipaneelissa lukee kassasi suuruus, jos tämä menee nollaan häviät ja joudut aloittamaan pelin uudestaan "pelaa uudestaan" nappulaa painamalla, jos näin haluat tehdä.
+
+ 
+Antautuminen onnistuu "antaudu" napilla.
 
 Pelin säännöt supistettuna:
- Yritä saada pisteesi mahdollisimman lähelle 21 ilman, että menee yli. Ässän arvo on 1 tai 11, kuvakorttien 10 ja muut kortit pistearvonsa verran.
+ 
+Yritä saada pisteesi mahdollisimman lähelle 21 ilman, että menee yli. 
+Ässän arvo on 1 tai 11, kuvakorttien 10 ja muut kortit pistearvonsa verran.
