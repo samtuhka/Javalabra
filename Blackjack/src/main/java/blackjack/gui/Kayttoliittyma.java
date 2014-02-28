@@ -17,10 +17,10 @@ import javax.swing.WindowConstants;
 
 /**
  * Vastaa käyttöliittymästä.
- *
+ * 
  */
 public class Kayttoliittyma implements Runnable {
-    
+
     private KorttienKuvienLataaja lataaja;
     private JFrame frame;
     /**
@@ -38,7 +38,7 @@ public class Kayttoliittyma implements Runnable {
     public Kayttoliittyma() {
         this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", 1000));
         this.paneeli = new Pelipaneeli(this);
-        this.lataaja =  new KorttienKuvienLataaja();
+        this.lataaja = new KorttienKuvienLataaja();
     }
 
     @Override
@@ -63,14 +63,14 @@ public class Kayttoliittyma implements Runnable {
     }
 
     /**
-     *  Päivittää pelin käyttöliittymää pelitilanteen mukaan.
+     * Päivittää pelin käyttöliittymää pelitilanteen mukaan.
      */
     public void paivitaPelia() {
         Pelaaja pelaaja = peli.getPelaaja();
         Jakaja jakaja = peli.getJakaja();
         paivitaPanosNappulat();
         if (pelaaja.getKassa() < peli.getSeuraavaPanos()) {
-            paneeli.panos100.doClick();
+            paneeli.nappulat.panos100.doClick();
         }
         if (pelaaja.vararikko()) {
             paivitaVararikossa();
@@ -81,6 +81,7 @@ public class Kayttoliittyma implements Runnable {
         paneeli.jakajaLabel.setText("Jakajan pistemäärä:  " + jakaja.getPisteet());
     }
 
+
     /**
      * Päivittää panosnappuloiden tilat.
      */
@@ -89,16 +90,16 @@ public class Kayttoliittyma implements Runnable {
         mustaaPanosNappulat();
 
         if (pelaaja.getKassa() >= 100) {
-            paneeli.panos100.setEnabled(true);
+            paneeli.nappulat.panos100.setEnabled(true);
         }
         if (pelaaja.getKassa() >= 200) {
-            paneeli.panos200.setEnabled(true);
+            paneeli.nappulat.panos200.setEnabled(true);
         }
         if (pelaaja.getKassa() >= 300) {
-            paneeli.panos300.setEnabled(true);
+            paneeli.nappulat.panos300.setEnabled(true);
         }
         if (pelaaja.getKassa() >= 400) {
-            paneeli.panos400.setEnabled(true);
+            paneeli.nappulat.panos400.setEnabled(true);
         }
     }
 
@@ -108,26 +109,28 @@ public class Kayttoliittyma implements Runnable {
      * kierroksen voi kuitenkaan vaihtua.
      */
     public void mustaaPanosNappulat() {
-        paneeli.panos100.setEnabled(false);
-        paneeli.panos200.setEnabled(false);
-        paneeli.panos300.setEnabled(false);
-        paneeli.panos400.setEnabled(false);
+        paneeli.nappulat.panos100.setEnabled(false);
+        paneeli.nappulat.panos200.setEnabled(false);
+        paneeli.nappulat.panos300.setEnabled(false);
+        paneeli.nappulat.panos400.setEnabled(false);
     }
 
     /**
      * Päivittää nappulat kun pelaaja vararikossa.
      */
     public void paivitaVararikossa() {
-        paneeli.jaaKortitNappula.setEnabled(false);
-        paneeli.jaamisNappula.setEnabled(false);
-        paneeli.lyomisNappula.setEnabled(false);
-        paneeli.pelaaUudestaanNappula.setEnabled(true);
+        paneeli.nappulat.jaaKortitNappula.setEnabled(false);
+        paneeli.nappulat.jaamisNappula.setEnabled(false);
+        paneeli.nappulat.otaKorttiNappula.setEnabled(false);
+        paneeli.nappulat.pelaaUudestaanNappula.setEnabled(true);
     }
 
     /**
      * Sijoittaa pelikorttien kuvia pelipaneeliin.
+     *
      * @param kasi käsi jonka kortit halutaan näyttää.
-     * @param pelaaja määrittää onko kyseessä ihmispelaaja vai jakaja, jonka kortteja näytetään.
+     * @param pelaaja määrittää onko kyseessä ihmispelaaja vai jakaja, jonka
+     * kortteja näytetään.
      * @param piilotaEka määrittää piilotetaanko jakajan ensimmäinen kortti.
      */
     public void naytaPelaajanKortit(Kasi kasi, boolean pelaaja, boolean piilotaEka) {
@@ -142,31 +145,32 @@ public class Kayttoliittyma implements Runnable {
         }
         panel.removeAll();
 
-        
+
         for (int i = 0; i < kasi.getKorttienMaara(); i++) {
             Kortti kortti = kasi.getKortit().get(i);
             Image kuva = lataaja.getKuva(kortti);
-            if (i == 0 && pelaaja==false && piilotaEka == true) {
+            if (i == 0 && pelaaja == false && piilotaEka == true) {
                 kuva = lataaja.getKortinTakapuoli();
             }
             JLabel labeli = new JLabel();
             panel.add(labeli);
-            if (kuva != null) {       
+            if (kuva != null) {
                 ImageIcon icon = new ImageIcon(kuva);
                 labeli.setIcon(icon);
             }
-            if (kuva==null) {
+            if (kuva == null) {
                 varaPelajaanKortit(labeli, kortti, i, pelaaja, piilotaEka);
             }
         }
     }
 
     /**
-     * Varametodi, jota naytaPelaajanKortit metodi kutsuu, jos korttien kuvat palautuu nulleina.
-     * Kuvien sijasta kortit representoituu tekstinä.
+     * Varametodi, jota naytaPelaajanKortit metodi kutsuu, jos korttien kuvat
+     * palautuu nulleina. Kuvien sijasta kortit representoituu tekstinä.
+     *
      * @param labeli pelipaneelin osa johon teksti sijoitetaan.
      * @param kortti mitä korttia kuvataan.
-     * @param i kortin indeksi. 
+     * @param i kortin indeksi.
      * @param pelaaja määrittää onko kyseessä jakaja vai ihmispelaaja.
      * @param piilotetaan piilotetaanko ensimmäinen kortti vai ei.
      */
@@ -174,12 +178,11 @@ public class Kayttoliittyma implements Runnable {
         System.out.println("Polkua " + lataaja.getPolku() + "ei löydy. Kuvakansion tiedostopolku väärin!!!");
         System.out.println("Korjaa kuvaKansionPolku luokassa KorttienKuvienLataaja!");
         System.out.println("Kuvat korvattu tekstillä");
-        if (piilotetaan && i==0 && pelaaja==false) {
+        if (piilotetaan && i == 0 && pelaaja == false) {
             labeli.setText("Piilotettu kortti");
-        }
-        else {
+        } else {
             labeli.setText(kortti.toString());
         }
-       
+
     }
 }

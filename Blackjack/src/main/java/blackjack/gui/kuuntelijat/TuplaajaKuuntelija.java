@@ -27,6 +27,6 @@ public class TuplaajaKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         peli.getKierros().tuplaa();
-        paneeli.jaamisNappula.doClick();
+        paneeli.nappulat.jaamisNappula.doClick();
     }
 }

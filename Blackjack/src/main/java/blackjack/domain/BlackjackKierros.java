@@ -17,6 +17,7 @@ public final class BlackjackKierros {
     /**
      * Luo pelin ensimmaisen kierroksen
      * @param pelaaja pelaaja
+     * @param jakaja 
      * @param panos valittu panos
      */
     public BlackjackKierros(Pelaaja pelaaja, Jakaja jakaja, int panos) {
@@ -119,6 +120,7 @@ public final class BlackjackKierros {
 
     /**
      * Palauttaa kierroksella käytetyn korttipakan.
+     * @return pakka
      */
     public Pakka getPakka() {
         return pakka;
@@ -126,6 +128,7 @@ public final class BlackjackKierros {
 
     /**
      * Palauttaa kierroksen panoksen.
+     * @return panos
      */
     public int getPanos() {
         return this.panos;

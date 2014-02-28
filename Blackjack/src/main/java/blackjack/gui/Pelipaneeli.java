@@ -2,7 +2,7 @@ package blackjack.gui;
 
 import blackjack.gui.kuuntelijat.JaamisKuuntelija;
 import blackjack.gui.kuuntelijat.JakamisKuuntelija;
-import blackjack.gui.kuuntelijat.LyomisKuuntelija;
+import blackjack.gui.kuuntelijat.OtaKorttiKuuntelija;
 import blackjack.gui.kuuntelijat.PanosKuuntelija;
 import blackjack.gui.kuuntelijat.PelaaUudestaanKuuntelija;
 import blackjack.gui.kuuntelijat.TuplaajaKuuntelija;
@@ -11,38 +11,33 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 /**
  * Vastaa pelipaneelin rakenteesta ja luomisesta.
  */
-public class Pelipaneeli extends JPanel {
+public final class Pelipaneeli extends JPanel {
 
     private JPanel korttipaneeli = new JPanel(new GridLayout(4, 1));
-    public JPanel pelaajanKortit = new JPanel();
-    public JPanel vastustajanKortit = new JPanel();
     private JPanel valikko = new JPanel();
     private JPanel panosValikko = new JPanel();
     private JPanel jakajanPaneeli = new JPanel();
     private JPanel pelaajanPaneeli = new JPanel();
-    public JButton lyomisNappula = new JButton();
-    public JButton jaaKortitNappula = new JButton();
-    public JButton jaamisNappula = new JButton();
-    public JButton tuplausNappula = new JButton();
-    public JButton pelaaUudestaanNappula = new JButton();
-    public JLabel jakajaLabel = new JLabel();
-    public JLabel pelaajaLabel = new JLabel();
-    public JRadioButton panos100 = new JRadioButton("100");
-    public JRadioButton panos200 = new JRadioButton("200");
-    public JRadioButton panos300 = new JRadioButton("300");
-    public JRadioButton panos400 = new JRadioButton("400");
+    /** paneeli joka sisältää pelaajan kortit. */ 
+    public static final JPanel pelaajanKortit = new JPanel(); 
+    /** paneeli joka sisältää jakajan kortit */
+    public static final JPanel vastustajanKortit = new JPanel(); 
+     /** sisältää pelissä käytetyt nappulat. */
+    public static final Nappulat nappulat = new Nappulat();
+     /** labeli jakajalle, käytetään jakajan pisteiden esittämiseen tekstinä */
+    public static final JLabel jakajaLabel = new JLabel();
+     /** labeli jakajalle, käytetään pelaajan pisteiden esittämiseen tekstinä */
+    public static final JLabel pelaajaLabel = new JLabel();
 
     /**
-     *  Luo pelipaneelin.
-     * @param liittyma
+     * Luo pelipaneelin.
+     * @param liittyma käyttöliittymä
      */
     public Pelipaneeli(Kayttoliittyma liittyma) {
         valikko.setBackground(new Color(0, 150, 0));
@@ -57,11 +52,11 @@ public class Pelipaneeli extends JPanel {
         luoKuuntelijat(liittyma);
 
         valikko.add(panosValikko);
-        valikko.add(jaaKortitNappula);
-        valikko.add(lyomisNappula);
-        valikko.add(jaamisNappula);
-        valikko.add(tuplausNappula);
-        valikko.add(pelaaUudestaanNappula);
+        valikko.add(nappulat.jaaKortitNappula);
+        valikko.add(nappulat.otaKorttiNappula);
+        valikko.add(nappulat.jaamisNappula);
+        valikko.add(nappulat.tuplausNappula);
+        valikko.add(nappulat.pelaaUudestaanNappula);
 
         pelaajanPaneeli.add(pelaajaLabel);
         jakajanPaneeli.add(jakajaLabel);
@@ -87,20 +82,20 @@ public class Pelipaneeli extends JPanel {
         ButtonGroup panosNappulat = new ButtonGroup();
         panosValikko.setBackground(new Color(0, 150, 0));
 
-        panos100.setBackground(new Color(0, 100, 0));
-        panos200.setBackground(new Color(0, 100, 0));
-        panos300.setBackground(new Color(0, 100, 0));
-        panos400.setBackground(new Color(0, 100, 0));
+        nappulat.panos100.setBackground(new Color(0, 100, 0));
+        nappulat.panos200.setBackground(new Color(0, 100, 0));
+        nappulat.panos300.setBackground(new Color(0, 100, 0));
+        nappulat.panos400.setBackground(new Color(0, 100, 0));
 
-        panosNappulat.add(panos100);
-        panosNappulat.add(panos200);
-        panosNappulat.add(panos300);
-        panosNappulat.add(panos400);
+        panosNappulat.add(nappulat.panos100);
+        panosNappulat.add(nappulat.panos200);
+        panosNappulat.add(nappulat.panos300);
+        panosNappulat.add(nappulat.panos400);
 
-        panosValikko.add(panos100);
-        panosValikko.add(panos200);
-        panosValikko.add(panos300);
-        panosValikko.add(panos400);
+        panosValikko.add(nappulat.panos100);
+        panosValikko.add(nappulat.panos200);
+        panosValikko.add(nappulat.panos300);
+        panosValikko.add(nappulat.panos400);
 
     }
 
@@ -122,19 +117,20 @@ public class Pelipaneeli extends JPanel {
 
     /**
      * Luo nappuloiden kuuntelijat.
+     *
      * @param liittyma käyttöliittymä
      */
     public void luoKuuntelijat(Kayttoliittyma liittyma) {
-        jaamisNappula.addActionListener(new JaamisKuuntelija(liittyma));
-        jaaKortitNappula.addActionListener(new JakamisKuuntelija(liittyma, this));
-        lyomisNappula.addActionListener(new LyomisKuuntelija(this, liittyma));
-        pelaaUudestaanNappula.addActionListener(new PelaaUudestaanKuuntelija(liittyma));
-        tuplausNappula.addActionListener(new TuplaajaKuuntelija(this, liittyma.peli));
+        nappulat.jaamisNappula.addActionListener(new JaamisKuuntelija(liittyma));
+        nappulat.jaaKortitNappula.addActionListener(new JakamisKuuntelija(liittyma, this));
+        nappulat.otaKorttiNappula.addActionListener(new OtaKorttiKuuntelija(this, liittyma));
+        nappulat.pelaaUudestaanNappula.addActionListener(new PelaaUudestaanKuuntelija(liittyma));
+        nappulat.tuplausNappula.addActionListener(new TuplaajaKuuntelija(this, liittyma.peli));
 
-        panos100.addActionListener(new PanosKuuntelija(100, liittyma.peli));
-        panos200.addActionListener(new PanosKuuntelija(200, liittyma.peli));
-        panos300.addActionListener(new PanosKuuntelija(300, liittyma.peli));
-        panos400.addActionListener(new PanosKuuntelija(400, liittyma.peli));
+        nappulat.panos100.addActionListener(new PanosKuuntelija(100, liittyma.peli));
+        nappulat.panos200.addActionListener(new PanosKuuntelija(200, liittyma.peli));
+        nappulat.panos300.addActionListener(new PanosKuuntelija(300, liittyma.peli));
+        nappulat.panos400.addActionListener(new PanosKuuntelija(400, liittyma.peli));
 
     }
 
@@ -142,24 +138,24 @@ public class Pelipaneeli extends JPanel {
      * Luo paneelin tekstit.
      */
     public void paneelinTekstit() {
-        jaaKortitNappula.setText("  Jaa kortit");
-        lyomisNappula.setText("  Anna");
-        jaamisNappula.setText("  Jää");
-        pelaaUudestaanNappula.setText("  Pelaa uudestaan");
-        tuplausNappula.setText("  Tuplaa");
+        nappulat.jaaKortitNappula.setText("  Jaa kortit");
+        nappulat.otaKorttiNappula.setText("  Ota kortti");
+        nappulat.jaamisNappula.setText("  Jää");
+        nappulat.pelaaUudestaanNappula.setText("  Pelaa uudestaan");
+        nappulat.tuplausNappula.setText("  Tuplaa");
         jakajaLabel.setText("  Jakaja  ");
         pelaajaLabel.setText("  Pelaaja  ");
     }
 
     /**
-     *  Palauttaa nappulat perustilaan.
+     * Palauttaa Nappulat perustilaan.
      */
     public void nappulatPerustilaan() {
-        jaaKortitNappula.setEnabled(true);
-        lyomisNappula.setEnabled(false);
-        jaamisNappula.setEnabled(false);
-        pelaaUudestaanNappula.setEnabled(false);
-        tuplausNappula.setEnabled(false);
+        nappulat.jaaKortitNappula.setEnabled(true);
+        nappulat.otaKorttiNappula.setEnabled(false);
+        nappulat.jaamisNappula.setEnabled(false);
+        nappulat.pelaaUudestaanNappula.setEnabled(false);
+        nappulat.tuplausNappula.setEnabled(false);
 
     }
 }

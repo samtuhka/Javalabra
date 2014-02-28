@@ -18,3 +18,4 @@ Javalabra2014-3
 25.2	3h		Koodia refaktoroitu, javadocia päivitetty
 26.2	4h		Korjailtu bugeja, testikattavuutta laajennettu, javadocia päivitetty.
 27.2	3h		Jar tiedosto luotu. Jar tiedoston kuvapolkujen kanssa onnetonta taistelua. 
+28.2	3h		Sekvenssikaavioita luotu, käyttöohjeet ja rakennekuvaus luotu, javadocia päivitetty, pientä refraktorointia.

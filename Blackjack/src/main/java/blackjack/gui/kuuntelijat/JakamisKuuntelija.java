@@ -47,13 +47,13 @@ public class JakamisKuuntelija implements ActionListener {
         paneeli.pelaajaLabel.setText("Pisteet:  " + pelaaja.getPisteet() + "   Kassa: " + pelaaja.getKassa());
         paneeli.jakajaLabel.setText("Jakajan pistemäärä:  " + jakaja.getNakyvaKasi().getArvo());
 
-        paneeli.jaaKortitNappula.setEnabled(false);
-        paneeli.jaamisNappula.setEnabled(true);
+        paneeli.nappulat.jaaKortitNappula.setEnabled(false);
+        paneeli.nappulat.jaamisNappula.setEnabled(true);
         if (pelaaja.getPisteet() != 21) {
-            paneeli.lyomisNappula.setEnabled(true);
+            paneeli.nappulat.otaKorttiNappula.setEnabled(true);
         }
         if (pelaaja.voiTuplata(peli.getSeuraavaPanos())) {
-            paneeli.tuplausNappula.setEnabled(true);
+            paneeli.nappulat.tuplausNappula.setEnabled(true);
         }
     }
 }

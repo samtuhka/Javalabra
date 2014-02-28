@@ -18,6 +18,10 @@ public class JaamisKuuntelija implements ActionListener {
     BlackjackKierros kierros;
     Kayttoliittyma ui;
 
+    /**
+     * Luo kuuntelijan.
+     * @param ui käyttöliittymä
+     */
     public JaamisKuuntelija(Kayttoliittyma ui) {
         this.peli = ui.peli;
         this.kierros = ui.peli.getKierros();

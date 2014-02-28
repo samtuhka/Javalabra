@@ -13,7 +13,7 @@ Toiminallisuus
 	Pelaajalle jaetaan kaksi korttia.
 	Pankille jaetaan kaksi korttia, joista toinen on pelaajalle näkymätön.
 
-  Lyö:
+  Ota kortti:
 	Pelaajalle jaetaan yksi kortti lisää.
 	Jos pelaajan korttien pistemäärä on yli 21, ei pelaaja voi ottaa lisää kortteja.
 	Pankki ottaa lisää kortteja kunnes jakan korttien pistemäärä on yhtäsuuri tai suurempi kuin 17.
@@ -37,5 +37,13 @@ Toiminallisuus
 
 
 Rakenne:	
+
+Ohjelman paketit:
+		domain: sisältää ohjelman sovelluslogiikan
+		domain.pelaaja: sisältää pelaajan ja jakajan sovelluslogiikan.
+		gui: sisältää käyttöliittymän toimintaa toteuttavat luokat
+		gui.kuuntelijat: käyttöliittymän nappuloiden kuuntelijat.
+		gui.util: Käyttöliittymän apuluokka, joka auttaa kuvien lukemisessa.
+		resources.cards: sisältää pelikorttien kuvat.
 	
 		

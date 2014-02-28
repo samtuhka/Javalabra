@@ -9,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Vastaa lyömis/anna kortti nappulan toiminnasta.
+ * Vastaa lyömis/ota kortti kortti nappulan toiminnasta.
  * Pelaaja ottaa yhden kortin lisää painaessaan nappulaa. 
  */
-public class LyomisKuuntelija implements ActionListener {
+public class OtaKorttiKuuntelija implements ActionListener {
 
     private BlackjackKierros kierros;
     private Pelipaneeli paneeli;
@@ -20,10 +20,10 @@ public class LyomisKuuntelija implements ActionListener {
 
     /**
      * Luo kuuntelijan.
-     * @param paneeli 
-     * @param liittyma
+     * @param paneeli pelipaneeli
+     * @param ui käyttöliittymä
      */
-    public LyomisKuuntelija(Pelipaneeli paneeli, Kayttoliittyma ui) {
+    public OtaKorttiKuuntelija(Pelipaneeli paneeli, Kayttoliittyma ui) {
         this.paneeli = paneeli;
         this.kierros = ui.peli.getKierros();
         this.ui = ui;
@@ -36,8 +36,7 @@ public class LyomisKuuntelija implements ActionListener {
 
         kierros.lyo(pelaaja);
         ui.naytaPelaajanKortit(pelaaja.getKasi(), true, false);
-        ui.naytaPelaajanKortit(jakaja.getKasi(), false, true);
-        paneeli.tuplausNappula.setEnabled(false);
+        paneeli.nappulat.tuplausNappula.setEnabled(false);
         if (pelaaja.getKasi().busted()) {
             kierros.kierroksenLoppu();
             ui.naytaPelaajanKortit(jakaja.getKasi(), false, false);
@@ -46,7 +45,7 @@ public class LyomisKuuntelija implements ActionListener {
             return;
         }
         if (pelaaja.getPisteet() == 21) {
-            paneeli.lyomisNappula.setEnabled(false);
+            paneeli.nappulat.otaKorttiNappula.setEnabled(false);
         }
 
         paneeli.pelaajaLabel.setText("Pisteet:  " + pelaaja.getPisteet() + "   Kassa: " + pelaaja.getKassa());

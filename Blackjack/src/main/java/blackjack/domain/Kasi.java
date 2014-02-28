@@ -37,9 +37,9 @@ public class Kasi {
      * @param pakka
      */
     public void otaPakastaKortti(Pakka pakka) {
-        Kortti k = pakka.annaPaallimainen();
-        lisaaKortti(k);
-        pakka.poistaKortti(k);
+        Kortti kortti = pakka.annaPaallimainen();
+        lisaaKortti(kortti);
+        pakka.poistaKortti(kortti);
     }
 
     /**

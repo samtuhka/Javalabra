@@ -21,7 +21,7 @@ public class KorttienKuvienLataaja {
      * kuvaKansionPolku on kuvien kansion polku.
      */
     public KorttienKuvienLataaja() {
-        this.kuvaKansionPolku = projektinPolku() + "/src/main/resources/cards/";
+        this.kuvaKansionPolku = projektinPolku() + "src/main/resources/cards/";
     }
 
     /**
