@@ -25,7 +25,7 @@ Toiminallisuus
 	Kun pankki ja pelaaja ei kumpikaan en‰‰ ota lis‰‰ kortteja peli loppuu.
 	Jos pelaajan korttien pistem‰‰r‰ on korkeampi kuin pankin, mutta pienempi kuin 21, voittaa pelaaja.
 	Tasapisteill‰ pelaaja h‰vi‰‰, paitsi jos h‰n on saanut kahdella kortilla pistem‰‰r‰n 21, mutta pankilla on enemm‰n kortteja.
-	Pelaaja menett‰‰ tai voittaa valitsemansa panoksen kassastaan.	
+	Pelaaja menett‰‰ tai voittaa valitsemansa panoksen kassastaan. Jos pelaaja voittaa blackjackilla voittaa h‰n 3:2 panoksen verran.
 
  Tuplaus:
 	Jos kahden ensimm‰isen kortin pistem‰‰r‰ on 9-11, voi pelaaja tuplata panoksensa.

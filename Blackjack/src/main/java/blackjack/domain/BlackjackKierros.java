@@ -7,7 +7,7 @@ import blackjack.domain.pelaaja.Pelaaja;
 /**
  * Luokka vastaa pelikierroksista.
  */
-public final class BlackjackKierros {
+public class BlackjackKierros {
 
     private Pelaaja pelaaja;
     private Jakaja jakaja;
@@ -16,8 +16,9 @@ public final class BlackjackKierros {
 
     /**
      * Luo pelin ensimmaisen kierroksen
+     *
      * @param pelaaja pelaaja
-     * @param jakaja 
+     * @param jakaja
      * @param panos valittu panos
      */
     public BlackjackKierros(Pelaaja pelaaja, Jakaja jakaja, int panos) {
@@ -27,8 +28,8 @@ public final class BlackjackKierros {
     }
 
     /**
-     * Aloittaa uuden kierroksen.
-     * Pelaaja ja jakaja ottaa kaksi korttia.
+     * Aloittaa uuden kierroksen. Pelaaja ja jakaja ottaa kaksi korttia.
+     *
      * @param panos valittu panos
      */
     public void uusiKierros(int panos) {
@@ -45,6 +46,7 @@ public final class BlackjackKierros {
 
     /**
      * Valittu pelaaja ottaa pakasta kortin kateensa.
+     *
      * @param pelaaja jakaja tai pelaaja
      */
     public void lyo(BlackjackPelaaja pelaaja) {
@@ -61,6 +63,7 @@ public final class BlackjackKierros {
 
     /**
      * Maarittaa voittaako vai haviaako pelaaja kierroksen.
+     *
      * @return jos pelaaja voittaa palauttaa true muuten false.
      */
     public boolean pelaajaVoittaa() {
@@ -79,8 +82,9 @@ public final class BlackjackKierros {
     }
 
     /**
-     * Määrittää tuleeko tasapeli vai ei.
-     * Jos sekä pelaajalla, että jakajalla on blackjack tai kummallakin on pisteet 21 ilman blackjackia, on tasapeli.
+     * Määrittää tuleeko tasapeli vai ei. Jos sekä pelaajalla, että jakajalla on
+     * blackjack tai kummallakin on pisteet 21 ilman blackjackia, on tasapeli.
+     *
      * @return jos tasapali true muuten false.
      */
     public boolean tasaPeli() {
@@ -97,10 +101,14 @@ public final class BlackjackKierros {
     /**
      * Vastaa kierroksen lopun toiminnasta. Lisaa tai poistaa pelaajan kassasta
      * panoksen sen mukaan voitettiinko, hävittiinkö vai tuliko tasapeli.
+     * Jos voittaa blackjackilla voittaa 3:2 kertaa panoksen.   
      */
     public void kierroksenLoppu() {
         if (tasaPeli()) {
             return;
+        } else if (pelaajaVoittaa() && pelaaja.getKasi().onBlackjack()) {
+            int voitto = (int) (panos * 1.5);
+            pelaaja.lisaaKassaan(voitto);
         } else if (pelaajaVoittaa()) {
             pelaaja.lisaaKassaan(panos);
         } else {
@@ -120,6 +128,7 @@ public final class BlackjackKierros {
 
     /**
      * Palauttaa kierroksella käytetyn korttipakan.
+     *
      * @return pakka
      */
     public Pakka getPakka() {
@@ -128,6 +137,7 @@ public final class BlackjackKierros {
 
     /**
      * Palauttaa kierroksen panoksen.
+     *
      * @return panos
      */
     public int getPanos() {

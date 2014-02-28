@@ -13,16 +13,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.WindowConstants;
 
 /**
  * Vastaa käyttöliittymästä.
- * 
+ *
  */
 public class Kayttoliittyma implements Runnable {
-
     private KorttienKuvienLataaja lataaja;
     private JFrame frame;
+    public int aloitusKassa;
     /**
      * Blackjack peli jota käyttöliittymä käyttää.
      */
@@ -36,7 +37,8 @@ public class Kayttoliittyma implements Runnable {
      * Luo käyttöliittymän.
      */
     public Kayttoliittyma() {
-        this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", 1000));
+        this.aloitusKassa = 500;
+        this.peli = new BlackjackPeli(new Pelaaja("Pelaaja", aloitusKassa));
         this.paneeli = new Pelipaneeli(this);
         this.lataaja = new KorttienKuvienLataaja();
     }
@@ -69,8 +71,10 @@ public class Kayttoliittyma implements Runnable {
         Pelaaja pelaaja = peli.getPelaaja();
         Jakaja jakaja = peli.getJakaja();
         paivitaPanosNappulat();
+        
+        int i = 0;
         if (pelaaja.getKassa() < peli.getSeuraavaPanos()) {
-            paneeli.nappulat.panos100.doClick();
+            paneeli.nappulat.panos1.doClick();
         }
         if (pelaaja.vararikko()) {
             paivitaVararikossa();
@@ -81,7 +85,6 @@ public class Kayttoliittyma implements Runnable {
         paneeli.jakajaLabel.setText("Jakajan pistemäärä:  " + jakaja.getPisteet());
     }
 
-
     /**
      * Päivittää panosnappuloiden tilat.
      */
@@ -89,17 +92,23 @@ public class Kayttoliittyma implements Runnable {
         Pelaaja pelaaja = peli.getPelaaja();
         mustaaPanosNappulat();
 
+        if (pelaaja.getKassa() >= 1) {
+            paneeli.nappulat.panos1.setEnabled(true);
+        }
+        if (pelaaja.getKassa() >= 5) {
+            paneeli.nappulat.panos5.setEnabled(true);
+        }
+        if (pelaaja.getKassa() >= 10) {
+            paneeli.nappulat.panos10.setEnabled(true);
+        }
+        if (pelaaja.getKassa() >= 25) {
+            paneeli.nappulat.panos25.setEnabled(true);
+        }
         if (pelaaja.getKassa() >= 100) {
             paneeli.nappulat.panos100.setEnabled(true);
         }
         if (pelaaja.getKassa() >= 200) {
             paneeli.nappulat.panos200.setEnabled(true);
-        }
-        if (pelaaja.getKassa() >= 300) {
-            paneeli.nappulat.panos300.setEnabled(true);
-        }
-        if (pelaaja.getKassa() >= 400) {
-            paneeli.nappulat.panos400.setEnabled(true);
         }
     }
 
@@ -109,10 +118,9 @@ public class Kayttoliittyma implements Runnable {
      * kierroksen voi kuitenkaan vaihtua.
      */
     public void mustaaPanosNappulat() {
-        paneeli.nappulat.panos100.setEnabled(false);
-        paneeli.nappulat.panos200.setEnabled(false);
-        paneeli.nappulat.panos300.setEnabled(false);
-        paneeli.nappulat.panos400.setEnabled(false);
+        for (JRadioButton panos: paneeli.nappulat.panokset) {
+            panos.setEnabled(false);
+        }
     }
 
     /**

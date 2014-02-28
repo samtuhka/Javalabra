@@ -13,33 +13,51 @@ import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 /**
  * Vastaa pelipaneelin rakenteesta ja luomisesta.
  */
 public final class Pelipaneeli extends JPanel {
 
+    private Kayttoliittyma ui;
     private JPanel korttipaneeli = new JPanel(new GridLayout(4, 1));
     private JPanel valikko = new JPanel();
     private JPanel panosValikko = new JPanel();
     private JPanel jakajanPaneeli = new JPanel();
     private JPanel pelaajanPaneeli = new JPanel();
-    /** paneeli joka sisältää pelaajan kortit. */ 
-    public static final JPanel pelaajanKortit = new JPanel(); 
-    /** paneeli joka sisältää jakajan kortit */
-    public static final JPanel vastustajanKortit = new JPanel(); 
-     /** sisältää pelissä käytetyt nappulat. */
+    /**
+     * paneeli joka sisältää pelaajan kortit.
+     */
+    public static final JPanel pelaajanKortit = new JPanel();
+    /**
+     * paneeli joka sisältää jakajan kortit
+     */
+    public static final JPanel vastustajanKortit = new JPanel();
+    /**
+     * sisältää pelissä käytetyt nappulat.
+     */
     public static final Nappulat nappulat = new Nappulat();
-     /** labeli jakajalle, käytetään jakajan pisteiden esittämiseen tekstinä */
+    /**
+     * labeli jakajalle, käytetään jakajan pisteiden esittämiseen tekstinä
+     */
     public static final JLabel jakajaLabel = new JLabel();
-     /** labeli jakajalle, käytetään pelaajan pisteiden esittämiseen tekstinä */
+    /**
+     * labeli jakajalle, käytetään pelaajan pisteiden esittämiseen tekstinä
+     */
     public static final JLabel pelaajaLabel = new JLabel();
 
     /**
      * Luo pelipaneelin.
+     *
      * @param liittyma käyttöliittymä
      */
-    public Pelipaneeli(Kayttoliittyma liittyma) {
+    public Pelipaneeli(Kayttoliittyma ui) {
+        this.ui = ui;
+        luoPelipaneeli();
+    }
+
+    public void luoPelipaneeli() {
         valikko.setBackground(new Color(0, 150, 0));
         jakajanPaneeli.setBackground(new Color(0, 150, 0));
         pelaajanPaneeli.setBackground(new Color(0, 150, 0));
@@ -47,9 +65,8 @@ public final class Pelipaneeli extends JPanel {
         valikko.setLayout(new FlowLayout());
 
         paneelinTekstit();
-
         panosPaneeli();
-        luoKuuntelijat(liittyma);
+        luoKuuntelijat();
 
         valikko.add(panosValikko);
         valikko.add(nappulat.jaaKortitNappula);
@@ -66,7 +83,6 @@ public final class Pelipaneeli extends JPanel {
 
         setLayout(new BorderLayout());
 
-
         add(korttipaneeli, BorderLayout.CENTER);
         add(valikko, BorderLayout.SOUTH);
     }
@@ -78,24 +94,15 @@ public final class Pelipaneeli extends JPanel {
         panosValikko.add(new JLabel("Valitse panos:"));
         panosValikko.add(new JLabel(""));
 
-        panosValikko.setLayout(new GridLayout(3, 2));
+        panosValikko.setLayout(new GridLayout(4, 2));
         ButtonGroup panosNappulat = new ButtonGroup();
         panosValikko.setBackground(new Color(0, 150, 0));
 
-        nappulat.panos100.setBackground(new Color(0, 100, 0));
-        nappulat.panos200.setBackground(new Color(0, 100, 0));
-        nappulat.panos300.setBackground(new Color(0, 100, 0));
-        nappulat.panos400.setBackground(new Color(0, 100, 0));
-
-        panosNappulat.add(nappulat.panos100);
-        panosNappulat.add(nappulat.panos200);
-        panosNappulat.add(nappulat.panos300);
-        panosNappulat.add(nappulat.panos400);
-
-        panosValikko.add(nappulat.panos100);
-        panosValikko.add(nappulat.panos200);
-        panosValikko.add(nappulat.panos300);
-        panosValikko.add(nappulat.panos400);
+        for (JRadioButton panos : nappulat.panokset) {
+            panos.setBackground(new Color(0, 100, 0));
+            panosNappulat.add(panos);
+            panosValikko.add(panos);
+        }
 
     }
 
@@ -120,17 +127,20 @@ public final class Pelipaneeli extends JPanel {
      *
      * @param liittyma käyttöliittymä
      */
-    public void luoKuuntelijat(Kayttoliittyma liittyma) {
-        nappulat.jaamisNappula.addActionListener(new JaamisKuuntelija(liittyma));
-        nappulat.jaaKortitNappula.addActionListener(new JakamisKuuntelija(liittyma, this));
-        nappulat.otaKorttiNappula.addActionListener(new OtaKorttiKuuntelija(this, liittyma));
-        nappulat.pelaaUudestaanNappula.addActionListener(new PelaaUudestaanKuuntelija(liittyma));
-        nappulat.tuplausNappula.addActionListener(new TuplaajaKuuntelija(this, liittyma.peli));
+    public void luoKuuntelijat() {
+        nappulat.jaamisNappula.addActionListener(new JaamisKuuntelija(ui));
+        nappulat.jaaKortitNappula.addActionListener(new JakamisKuuntelija(ui, this));
+        nappulat.otaKorttiNappula.addActionListener(new OtaKorttiKuuntelija(this, ui));
+        nappulat.pelaaUudestaanNappula.addActionListener(new PelaaUudestaanKuuntelija(ui));
+        nappulat.tuplausNappula.addActionListener(new TuplaajaKuuntelija(this, ui.peli));
 
-        nappulat.panos100.addActionListener(new PanosKuuntelija(100, liittyma.peli));
-        nappulat.panos200.addActionListener(new PanosKuuntelija(200, liittyma.peli));
-        nappulat.panos300.addActionListener(new PanosKuuntelija(300, liittyma.peli));
-        nappulat.panos400.addActionListener(new PanosKuuntelija(400, liittyma.peli));
+        nappulat.panos1.addActionListener(new PanosKuuntelija(1, ui.peli));
+        nappulat.panos5.addActionListener(new PanosKuuntelija(5, ui.peli));
+        nappulat.panos10.addActionListener(new PanosKuuntelija(10, ui.peli));
+        nappulat.panos25.addActionListener(new PanosKuuntelija(25, ui.peli));
+        nappulat.panos100.addActionListener(new PanosKuuntelija(100, ui.peli));
+        nappulat.panos200.addActionListener(new PanosKuuntelija(200, ui.peli));
+
 
     }
 
@@ -144,7 +154,7 @@ public final class Pelipaneeli extends JPanel {
         nappulat.pelaaUudestaanNappula.setText("  Pelaa uudestaan");
         nappulat.tuplausNappula.setText("  Tuplaa");
         jakajaLabel.setText("  Jakaja  ");
-        pelaajaLabel.setText("  Pelaaja  ");
+        pelaajaLabel.setText("  Pelaajan  kassa: " + ui.aloitusKassa);
     }
 
     /**

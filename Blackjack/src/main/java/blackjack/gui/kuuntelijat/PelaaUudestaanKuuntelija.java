@@ -26,7 +26,7 @@ public class PelaaUudestaanKuuntelija implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        ui.peli.getPelaaja().lisaaKassaan(1000);
+        ui.peli.getPelaaja().lisaaKassaan(ui.aloitusKassa);
 
         ui.paivitaPelia();
         ui.paneeli.pelaajanKortit.removeAll();

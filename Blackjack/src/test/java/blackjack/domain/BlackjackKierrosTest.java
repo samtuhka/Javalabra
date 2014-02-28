@@ -68,6 +68,7 @@ public class BlackjackKierrosTest {
     @Test
     public void jakajaOttaaKortteja() {
         kierros.jakajaOttaaKortteja();
+        assertTrue(jakaja.getKasi().getKorttienMaara()>=2);
         assertTrue(jakaja.ottaaKortin() == false);
     }
 
@@ -139,11 +140,26 @@ public class BlackjackKierrosTest {
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 12));
 
         kierros.kierroksenLoppu();
+        assertTrue(kierros.pelaajaVoittaa()==false);
         assertTrue(pelaaja.getKassa() == 900);
     }
 
     @Test
-    public void voittoKierroksenLoppu() {
+    public void voittoaKierroksenLoppu() {
+        pelaaja.uusiKasi();
+        jakaja.uusiKasi();
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 3));
+        jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 2));
+
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 3));
+        pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 7));
+
+        kierros.kierroksenLoppu();
+        assertTrue(pelaaja.getKassa() == 1100);
+    }
+
+    @Test
+    public void voittoBlackjackillaKierroksenLoppu() {
         pelaaja.uusiKasi();
         jakaja.uusiKasi();
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 13));
@@ -154,6 +170,6 @@ public class BlackjackKierrosTest {
         pelaaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 12));
 
         kierros.kierroksenLoppu();
-        assertTrue(pelaaja.getKassa() == 1100);
+        assertTrue(pelaaja.getKassa() == 1150);
     }
 }
