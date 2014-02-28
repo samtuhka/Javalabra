@@ -23,14 +23,11 @@ import javax.swing.WindowConstants;
 public class Kayttoliittyma implements Runnable {
     private KorttienKuvienLataaja lataaja;
     private JFrame frame;
+    /**  Pelaajan aloitus kassa.  */
     public int aloitusKassa;
-    /**
-     * Blackjack peli jota käyttöliittymä käyttää.
-     */
+    /** Blackjack peli jota käyttöliittymä käyttää. */
     public BlackjackPeli peli;
-    /**
-     * Pelipaneeli joka on osa käyttöliittymää.
-     */
+    /** Pelipaneeli joka on osa käyttöliittymää. */
     public Pelipaneeli paneeli;
 
     /**

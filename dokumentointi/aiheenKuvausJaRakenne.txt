@@ -1,49 +1,80 @@
 Aihe: Blackjack
+
+
 Toteutetaan blackjack korttipeli, jossa pelataan pankkia vastaan. Pelaajalla on alussa rahakassa, jota hän pyrkii kasvattamaan. 
-Jokaisen pelikierttoksen aikana pelaajan tarkoituksena on saada käsi, jonka yhteenlaskettu pistemäärä on 
+Jokaisen pelikierroksen aikana pelaajan tarkoituksena on saada käsi, jonka yhteenlaskettu pistemäärä on 
 suurempi kuin pankin, menemättä kuitenkaan yli kahdenkymmenenyhden. 
+
+
 
 Käyttäjät: Pelaaja
 
+
+
 Toiminallisuus
-  Valitse panos:
+  
+
+Valitse panos:
 	Pelaaja valitsee panoksen, jonka hän lisää/poistaa kassastaan käden voittamisen/häviämisen yhteydessä.
 
-  Korttien jako:
+  
+	
+Korttien jako:
 	Pelaajalle jaetaan kaksi korttia.
-	Pankille jaetaan kaksi korttia, joista toinen on pelaajalle näkymätön.
+ Pankille jaetaan kaksi korttia, joista toinen on pelaajalle näkymätön.
 
-  Ota kortti:
+  
+
+Ota kortti:
 	Pelaajalle jaetaan yksi kortti lisää.
 	Jos pelaajan korttien pistemäärä on yli 21, ei pelaaja voi ottaa lisää kortteja.
-	Pankki ottaa lisää kortteja kunnes jakan korttien pistemäärä on yhtäsuuri tai suurempi kuin 17.
+ Pankki ottaa lisää kortteja kunnes jakan korttien pistemäärä on yhtäsuuri tai suurempi kuin 17.
 	
-  Jää:
+  
+
+Jää:
 	Pelaaja ei ota lisää kortteja.
 
-  Käden voittaminen/häviäminen:
+  
+
+Käden voittaminen/häviäminen:
 	Kun pankki ja pelaaja ei kumpikaan enää ota lisää kortteja peli loppuu.
 	Jos pelaajan korttien pistemäärä on korkeampi kuin pankin, mutta pienempi kuin 21, voittaa pelaaja.
 	Tasapisteillä pelaaja häviää, paitsi jos hän on saanut kahdella kortilla pistemäärän 21, mutta pankilla on enemmän kortteja.
-	Pelaaja menettää tai voittaa valitsemansa panoksen kassastaan. Jos pelaaja voittaa blackjackilla voittaa hän 3:2 panoksen verran.
+	Pelaaja menettää tai voittaa valitsemansa panoksen kassastaan. Jos pelaaja voittaa blackjackilla voittaa hän 3:2 panoksen verran (pyöristettynä alas).
 
- Tuplaus:
+ 
+
+Tuplaus:
 	Jos kahden ensimmäisen kortin pistemäärä on 9-11, voi pelaaja tuplata panoksensa.
 
- Lopetus:
+
+
+Antautuminen:	Kahden ensimmäisen kortin jälkeen pelaaja voi antautua menettäen puolet panoksestaan (pyöristettynä ylös).
+
+Lopetus:
 	Pelaaja voi lopettaa milloin tahansa. 
 	Jos pelaajan kassa tippuu nollaan, peli loppuu.
 	
 
 
-Rakenne:	
+
+
+Rakenne:
+	
 
 Ohjelman paketit:
-		domain: sisältää ohjelman sovelluslogiikan
-		domain.pelaaja: sisältää pelaajan ja jakajan sovelluslogiikan.
-		gui: sisältää käyttöliittymän toimintaa toteuttavat luokat
-		gui.kuuntelijat: käyttöliittymän nappuloiden kuuntelijat.
-		gui.util: Käyttöliittymän apuluokka, joka auttaa kuvien lukemisessa.
-		resources.cards: sisältää pelikorttien kuvat.
+
+			domain: sisältää ohjelman sovelluslogiikan
+
+			domain.pelaaja: sisältää pelaajan ja jakajan sovelluslogiikan.
+		
+			gui: sisältää käyttöliittymän toimintaa toteuttavat luokat
+		
+			gui.kuuntelijat: käyttöliittymän nappuloiden kuuntelijat.
+		
+			gui.util: Käyttöliittymän apuluokka, joka auttaa kuvien lukemisessa.
+		
+			resources.cards: sisältää pelikorttien kuvat.
 	
 		

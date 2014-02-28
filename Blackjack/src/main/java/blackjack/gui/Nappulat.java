@@ -13,6 +13,7 @@ public class Nappulat {
     public static final JButton jaaKortitNappula = new JButton();
     public static final JButton jaamisNappula = new JButton();
     public static final JButton tuplausNappula = new JButton();
+    public static final JButton antautumisNappula = new JButton();
     public static final JButton pelaaUudestaanNappula = new JButton();
     public static final JRadioButton panos1 = new JRadioButton("1");
     public static final JRadioButton panos5 = new JRadioButton("5");

@@ -68,7 +68,7 @@ public class BlackjackKierrosTest {
     @Test
     public void jakajaOttaaKortteja() {
         kierros.jakajaOttaaKortteja();
-        assertTrue(jakaja.getKasi().getKorttienMaara()>=2);
+        assertTrue(jakaja.getKasi().getKorttienMaara() >= 2);
         assertTrue(jakaja.ottaaKortin() == false);
     }
 
@@ -140,7 +140,7 @@ public class BlackjackKierrosTest {
         jakaja.getKasi().lisaaKortti(new Kortti(Maat.Hertta, 12));
 
         kierros.kierroksenLoppu();
-        assertTrue(kierros.pelaajaVoittaa()==false);
+        assertTrue(kierros.pelaajaVoittaa() == false);
         assertTrue(pelaaja.getKassa() == 900);
     }
 
@@ -171,5 +171,12 @@ public class BlackjackKierrosTest {
 
         kierros.kierroksenLoppu();
         assertTrue(pelaaja.getKassa() == 1150);
+    }
+
+    @Test
+    public void antaudu() {
+        kierros.uusiKierros(50);
+        kierros.antaudu();
+        assertTrue(pelaaja.getKassa() == 975);
     }
 }

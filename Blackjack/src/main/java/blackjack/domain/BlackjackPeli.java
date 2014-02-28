@@ -20,9 +20,9 @@ public class BlackjackPeli {
      */
     public BlackjackPeli(Pelaaja pelaaja) {
         this.pelaaja = pelaaja;
-        this.seuraavaPanos = 100;
+        this.seuraavaPanos = 1;
         this.jakaja = new Jakaja();
-        this.kierros = new BlackjackKierros(pelaaja, jakaja, 100);
+        this.kierros = new BlackjackKierros(pelaaja, jakaja, 1);
     }
 
     /**

@@ -1,5 +1,6 @@
 package blackjack.gui;
 
+import blackjack.gui.kuuntelijat.AntautumisKuuntelija;
 import blackjack.gui.kuuntelijat.JaamisKuuntelija;
 import blackjack.gui.kuuntelijat.JakamisKuuntelija;
 import blackjack.gui.kuuntelijat.OtaKorttiKuuntelija;
@@ -50,13 +51,16 @@ public final class Pelipaneeli extends JPanel {
     /**
      * Luo pelipaneelin.
      *
-     * @param liittyma käyttöliittymä
+     * @param ui käyttöliittymä
      */
     public Pelipaneeli(Kayttoliittyma ui) {
         this.ui = ui;
         luoPelipaneeli();
     }
 
+    /**
+     * Luo paneelin osat ja asettelee ne.
+     */
     public void luoPelipaneeli() {
         valikko.setBackground(new Color(0, 150, 0));
         jakajanPaneeli.setBackground(new Color(0, 150, 0));
@@ -73,6 +77,7 @@ public final class Pelipaneeli extends JPanel {
         valikko.add(nappulat.otaKorttiNappula);
         valikko.add(nappulat.jaamisNappula);
         valikko.add(nappulat.tuplausNappula);
+        valikko.add(nappulat.antautumisNappula);
         valikko.add(nappulat.pelaaUudestaanNappula);
 
         pelaajanPaneeli.add(pelaajaLabel);
@@ -125,7 +130,6 @@ public final class Pelipaneeli extends JPanel {
     /**
      * Luo nappuloiden kuuntelijat.
      *
-     * @param liittyma käyttöliittymä
      */
     public void luoKuuntelijat() {
         nappulat.jaamisNappula.addActionListener(new JaamisKuuntelija(ui));
@@ -133,6 +137,7 @@ public final class Pelipaneeli extends JPanel {
         nappulat.otaKorttiNappula.addActionListener(new OtaKorttiKuuntelija(this, ui));
         nappulat.pelaaUudestaanNappula.addActionListener(new PelaaUudestaanKuuntelija(ui));
         nappulat.tuplausNappula.addActionListener(new TuplaajaKuuntelija(this, ui.peli));
+        nappulat.antautumisNappula.addActionListener(new AntautumisKuuntelija(ui));
 
         nappulat.panos1.addActionListener(new PanosKuuntelija(1, ui.peli));
         nappulat.panos5.addActionListener(new PanosKuuntelija(5, ui.peli));
@@ -153,6 +158,7 @@ public final class Pelipaneeli extends JPanel {
         nappulat.jaamisNappula.setText("  Jää");
         nappulat.pelaaUudestaanNappula.setText("  Pelaa uudestaan");
         nappulat.tuplausNappula.setText("  Tuplaa");
+        nappulat.antautumisNappula.setText("  Antaudu");
         jakajaLabel.setText("  Jakaja  ");
         pelaajaLabel.setText("  Pelaajan  kassa: " + ui.aloitusKassa);
     }
@@ -166,6 +172,7 @@ public final class Pelipaneeli extends JPanel {
         nappulat.jaamisNappula.setEnabled(false);
         nappulat.pelaaUudestaanNappula.setEnabled(false);
         nappulat.tuplausNappula.setEnabled(false);
+        nappulat.antautumisNappula.setEnabled(false);
 
     }
 }

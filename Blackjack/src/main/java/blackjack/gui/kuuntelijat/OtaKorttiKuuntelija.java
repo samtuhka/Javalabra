@@ -37,6 +37,7 @@ public class OtaKorttiKuuntelija implements ActionListener {
         kierros.lyo(pelaaja);
         ui.naytaPelaajanKortit(pelaaja.getKasi(), true, false);
         paneeli.nappulat.tuplausNappula.setEnabled(false);
+        paneeli.nappulat.antautumisNappula.setEnabled(false);
         if (pelaaja.getKasi().busted()) {
             kierros.kierroksenLoppu();
             ui.naytaPelaajanKortit(jakaja.getKasi(), false, false);

@@ -1,21 +1,40 @@
 Javalabra2014-3
 
+
 16.1.	2h		Github-repositorion luonti, netbeans projektin luonti, aihem‰‰rittelyn laatiminen, tuntikirjanpidon aloitus ja palautus Githubiin. 
+
 19.1	25m		M‰‰rittelyvaiheen luokkakaavio luotu
+
 21.1	2h		Koodaus aloitettu, luokat Kasi, Kortti ja Pakka luotu
+
 23.1 	3h		Koodausta jatkettu, 16 JUnit testi‰ luotu, Pelaaja luokka luotu alustavasti
+
 23.1	20m		Pit reporttien kanssa s‰‰t‰mist‰	
+
 4.2	3h		Luokat BlackJackPelaaja, Jakaja, ja Maat luotu. Pelaaja luokkaa muokattu. 
+
 5.2	1h		Lis‰‰ JUnit testej‰ koodattu.
+
 6.2	1h		BlackJackKierros luokan koodaus aloitettu.
+
 7.2	1h		Javadoc aloitettu, aihem‰‰rittely‰ p‰ivitetty
+
 10.2	2h		Kayttoliittyma luokka luotu alustavasti.
+
 17.2	5h		Kayttoliittymaa koodattu, Sovelloslogiikan bugeja korjattu.
+
 18.2	6h		Luokka paneeli koodattu, kuuntelijoita koodattu.
+
 23.2	30m		Luokkakaaviota p‰ivitetty.
+
 19.2	3h		Luokka KorttienKuvienLaataja koodattu, Kayttoliittyma luokkaa p‰ivitetty.
+
 24.2	2h		Lis‰‰ testej‰, KorttienKuvienLaatajan kanssa kamppailua. 
+
 25.2	3h		Koodia refaktoroitu, javadocia p‰ivitetty
+
 26.2	4h		Korjailtu bugeja, testikattavuutta laajennettu, javadocia p‰ivitetty.
+
 27.2	3h		Jar tiedosto luotu. Jar tiedoston kuvapolkujen kanssa onnetonta taistelua. 
-28.2	5h		Sekvenssikaavioita luotu, k‰yttˆohjeet ja rakennekuvaus luotu, javadocia p‰ivitetty, refraktorointia ja pient‰ s‰‰tˆ‰.
+
+28.2	7h		Sekvenssikaavioita luotu, k‰yttˆohjeet ja rakennekuvaus luotu, javadocia p‰ivitetty, refraktorointia, antautuminen lis‰tty.

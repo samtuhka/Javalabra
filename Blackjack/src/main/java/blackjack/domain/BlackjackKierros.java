@@ -100,8 +100,8 @@ public class BlackjackKierros {
 
     /**
      * Vastaa kierroksen lopun toiminnasta. Lisaa tai poistaa pelaajan kassasta
-     * panoksen sen mukaan voitettiinko, hävittiinkö vai tuliko tasapeli.
-     * Jos voittaa blackjackilla voittaa 3:2 kertaa panoksen.   
+     * panoksen sen mukaan voitettiinko, hävittiinkö vai tuliko tasapeli. Jos
+     * voittaa blackjackilla voittaa 3:2 kertaa panoksen pyöristettynä alas.
      */
     public void kierroksenLoppu() {
         if (tasaPeli()) {
@@ -142,5 +142,13 @@ public class BlackjackKierros {
      */
     public int getPanos() {
         return this.panos;
+    }
+
+    /**
+     * Pelaajan kassasta poistetaan puolet panoksesta pyöristettynä ylös.
+     */
+    public void antaudu() {
+        int havioSumma = (int)(Math.ceil((this.panos*0.5)));
+        pelaaja.poistaKassasta(havioSumma);
     }
 }

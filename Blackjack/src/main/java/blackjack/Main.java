@@ -4,7 +4,7 @@ package blackjack;
 import blackjack.gui.Kayttoliittyma;
 
 /**
- * Käynnistää pelin.
+ * Peli käynnistetään täältä.
  */
 public class Main {
     
